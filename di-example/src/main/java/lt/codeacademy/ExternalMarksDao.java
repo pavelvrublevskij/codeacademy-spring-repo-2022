@@ -2,12 +2,13 @@ package lt.codeacademy;
 
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 
-public class InternalMarksDao implements MarksDao {
+public class ExternalMarksDao implements MarksDao {
 
     @Override
     public List<Integer> getMarks() {
-        return List.of(5, 8, 10, 10, 7, 6, 8);
+        return Collections.emptyList();
     }
 }
