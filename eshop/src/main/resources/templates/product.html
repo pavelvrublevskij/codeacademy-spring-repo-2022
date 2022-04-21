@@ -11,13 +11,13 @@
         <input type="text" placeholder="Write Name" th:field="*{name}"><br/>
 
         <label>Quantity:</label>
-        <input type="text" placeholder="Write Quantity" name="quantity"><br/>
+        <input type="text" placeholder="Write Quantity" th:field="*{quantity}"><br/>
 
         <label>Price:</label>
-        <input type="text" placeholder="Write Price" name="price"><br/>
+        <input type="text" placeholder="Write Price" th:field="*{price}"><br/>
 
         <label>Description:</label>
-        <textarea type="text" placeholder="Write Description" name="description"></textarea><br/><br/>
+        <textarea type="text" placeholder="Write Description" th:field="*{description}"></textarea><br/><br/>
 
         <button type="submit">Submit</button>
     </form>
