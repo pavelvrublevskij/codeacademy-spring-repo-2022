@@ -17,6 +17,6 @@ public class ProductController {
 
     @PostMapping("/products/open")
     public String createProduct(Model model, Product product) {
-        return "product";
+        return "hello";
     }
 }
