@@ -7,26 +7,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/products")
 public class ProductController {
 
     private final ProductService productService;
 
-    @GetMapping("/products/open")
+    @GetMapping("/")
     public String openCrateProductForm(Model model) {
         model.addAttribute("product", new Product());
         return "product";
     }
 
-    @PostMapping("/products/open")
+    @PostMapping("/")
     public String createProduct(Model model, Product product) {
         productService.addProduct(product);
         return "hello";
     }
 
-    @GetMapping("/products/list")
+    @GetMapping("/list")
     public String getProducts(Model model) {
         model.addAttribute("productList", productService.getProducts());
         return "products";
