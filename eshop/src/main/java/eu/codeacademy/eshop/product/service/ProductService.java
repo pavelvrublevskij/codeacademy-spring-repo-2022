@@ -25,4 +25,8 @@ public class ProductService {
     public Product getProductByUUID(UUID id) {
         return productRepository.getProductByUUID(id);
     }
+
+    public void updateProduct(Product product) {
+        productRepository.update(product);
+    }
 }

@@ -39,8 +39,15 @@ public class ProductController {
 
     @GetMapping("/update")
 //    public String getUpdateProduct(Model model, @RequestParam UUID id)  ///also possible
-    public String getUpdateProduct(Model model, @RequestParam("id") UUID productId) {
-        model.addAttribute("product", productService.getProductByUUID(productId));
+    public String getUpdateProduct(Model model, @RequestParam UUID id) {
+        model.addAttribute("product", productService.getProductByUUID(id));
         return "product";
+    }
+
+    @PostMapping("/update")
+    public String getUpdateProduct(Model model, Product product) {
+        productService.updateProduct(product);
+        model.addAttribute("productList", productService.getProducts());
+        return "products";
     }
 }

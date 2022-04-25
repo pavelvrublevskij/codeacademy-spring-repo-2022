@@ -27,4 +27,9 @@ public class ProductRepository {
     public Product getProductByUUID(UUID id) {
         return products.get(id);
     }
+
+    public void update(Product product) {
+        products.put(product.getUuid(), product);
+    }
+
 }
