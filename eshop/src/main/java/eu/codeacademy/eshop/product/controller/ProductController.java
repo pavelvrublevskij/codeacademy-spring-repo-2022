@@ -38,7 +38,6 @@ public class ProductController {
     }
 
     @GetMapping("/update")
-//    public String getUpdateProduct(Model model, @RequestParam UUID id)  ///also possible
     public String getUpdateProduct(Model model, @RequestParam UUID id) {
         model.addAttribute("product", productService.getProductByUUID(id));
         return "product";
@@ -48,6 +47,14 @@ public class ProductController {
     public String getUpdateProduct(Model model, Product product) {
         productService.updateProduct(product);
         model.addAttribute("productList", productService.getProducts());
+        return "products";
+    }
+
+    @GetMapping("/delete")
+    public String deleteProduct(Model model, @RequestParam UUID id) {
+        productService.deleteProduct(id);
+        model.addAttribute("productList", productService.getProducts());
+
         return "products";
     }
 }

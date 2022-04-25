@@ -32,4 +32,7 @@ public class ProductRepository {
         products.put(product.getUuid(), product);
     }
 
+    public void delete(UUID uuid) {
+        products.remove(uuid);
+    }
 }
