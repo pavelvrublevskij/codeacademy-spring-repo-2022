@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.math.BigDecimal;
+
 @Configuration
 @RequiredArgsConstructor
 public class MockDataConfig {
@@ -20,8 +22,8 @@ public class MockDataConfig {
         while (MAX_COUNT >= count) {
             productRepository.save(Product.builder()
                     .name("Samsung " + (count * 10))
-                    .quantity("" + count)
-                    .price("" + count * 2)
+                    .quantity(count)
+                    .price(BigDecimal.valueOf(count * 2L))
                     .description("Samsung description of " + count)
                     .build());
             count++;
