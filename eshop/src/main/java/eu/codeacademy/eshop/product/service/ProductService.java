@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -19,5 +20,9 @@ public class ProductService {
 
     public List<Product> getProducts() {
         return productRepository.getProducts();
+    }
+
+    public Product getProductByUUID(UUID id) {
+        return productRepository.getProductByUUID(id);
     }
 }

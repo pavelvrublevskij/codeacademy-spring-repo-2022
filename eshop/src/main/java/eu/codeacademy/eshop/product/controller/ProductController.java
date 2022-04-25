@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.UUID;
 
 @Controller
 @RequiredArgsConstructor
@@ -32,5 +35,12 @@ public class ProductController {
     public String getProducts(Model model) {
         model.addAttribute("productList", productService.getProducts());
         return "products";
+    }
+
+    @GetMapping("/update")
+//    public String getUpdateProduct(Model model, @RequestParam UUID id)  ///also possible
+    public String getUpdateProduct(Model model, @RequestParam("id") UUID productId) {
+        model.addAttribute("product", productService.getProductByUUID(productId));
+        return "product";
     }
 }
