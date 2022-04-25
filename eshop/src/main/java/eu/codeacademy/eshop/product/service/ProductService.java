@@ -1,11 +1,23 @@
 package eu.codeacademy.eshop.product.service;
 
 import eu.codeacademy.eshop.product.model.Product;
+import eu.codeacademy.eshop.product.repository.ProductRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface ProductService {
-    void addProduct(Product product);
+@Service
+@RequiredArgsConstructor
+public class ProductService {
 
-    List<Product> getProducts();
+    private final ProductRepository productRepository;
+
+    public void addProduct(Product product) {
+        productRepository.save(product);
+    }
+
+    public List<Product> getProducts() {
+        return productRepository.getProducts();
+    }
 }
