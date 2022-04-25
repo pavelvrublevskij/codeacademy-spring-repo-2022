@@ -3,6 +3,7 @@ package eu.codeacademy.eshop.config;
 import eu.codeacademy.eshop.product.model.Product;
 import eu.codeacademy.eshop.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,6 +11,7 @@ import java.math.BigDecimal;
 
 @Configuration
 @RequiredArgsConstructor
+@Log4j2
 public class MockDataConfig {
 
     private static final int MAX_COUNT = 10;
@@ -28,5 +30,7 @@ public class MockDataConfig {
                     .build());
             count++;
         }
+
+        log.atDebug().log("-====== initProducts initialized ======-");
     }
 }

@@ -1,3 +1,9 @@
 spring:
   main:
     banner-mode: console
+logging:
+  level:
+    eu:
+      codeacademy:
+        eshop:
+          config: DEBUG
