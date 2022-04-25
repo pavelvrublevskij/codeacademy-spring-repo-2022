@@ -29,8 +29,8 @@ public class ProductController {
     @PostMapping
     public String createProduct(Model model, Product product) {
         productService.addProduct(product);
-
-        return "hello";
+        model.addAttribute("message", "Product added successfully!");
+        return "product";
     }
 
     @GetMapping("/list")
