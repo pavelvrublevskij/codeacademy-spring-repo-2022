@@ -25,4 +25,10 @@ public class ProductController {
         productService.addProduct(product);
         return "hello";
     }
+
+    @GetMapping("/products/list")
+    public String getProducts(Model model) {
+        model.addAttribute("productList", productService.getProducts());
+        return "products";
+    }
 }

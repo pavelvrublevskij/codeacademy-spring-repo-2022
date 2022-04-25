@@ -14,4 +14,8 @@ public class ProductRepository {
     public void save(Product product) {
         products.add(product);
     }
+
+    public List<Product> getProducts() {
+        return products;
+    }
 }
