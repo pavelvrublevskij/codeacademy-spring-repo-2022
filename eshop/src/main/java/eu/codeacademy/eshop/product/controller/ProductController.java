@@ -18,7 +18,7 @@ public class ProductController {
 
     @GetMapping
     public String openCrateProductForm(Model model) {
-        model.addAttribute("product", new Product());
+        model.addAttribute("product", Product.builder().build());
         return "product";
     }
 
