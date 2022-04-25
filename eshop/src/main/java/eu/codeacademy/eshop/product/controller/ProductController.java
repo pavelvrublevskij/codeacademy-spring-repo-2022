@@ -16,13 +16,13 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @GetMapping("/")
+    @GetMapping
     public String openCrateProductForm(Model model) {
         model.addAttribute("product", new Product());
         return "product";
     }
 
-    @PostMapping("/")
+    @PostMapping
     public String createProduct(Model model, Product product) {
         productService.addProduct(product);
         return "hello";
