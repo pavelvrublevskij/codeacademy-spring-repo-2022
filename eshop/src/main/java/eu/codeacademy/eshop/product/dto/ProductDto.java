@@ -1,4 +1,4 @@
-package eu.codeacademy.eshop.product.model;
+package eu.codeacademy.eshop.product.dto;
 
 import lombok.Builder;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Data
 @Builder
-public class Product {
+public class ProductDto {
 
     private UUID productId;
     private String name;

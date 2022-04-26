@@ -1,6 +1,6 @@
 package eu.codeacademy.eshop.product.controller;
 
-import eu.codeacademy.eshop.product.model.Product;
+import eu.codeacademy.eshop.product.dto.ProductDto;
 import eu.codeacademy.eshop.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -21,13 +21,13 @@ public class ProductController {
 
     @GetMapping
     public String openCrateProductForm(Model model) {
-        model.addAttribute("product", Product.builder().build());
+        model.addAttribute("product", ProductDto.builder().build());
 
         return "product";
     }
 
     @PostMapping
-    public String createProduct(Model model, Product product) {
+    public String createProduct(Model model, ProductDto product) {
         productService.addProduct(product);
         model.addAttribute("message", "Product added successfully!");
         return "product";
@@ -48,7 +48,7 @@ public class ProductController {
     }
 
     @PostMapping("/{productId}/update")
-    public String getUpdateProduct(Model model, Product product) {
+    public String getUpdateProduct(Model model, ProductDto product) {
         productService.updateProduct(product);
         model.addAttribute("productList", productService.getProducts());
 
