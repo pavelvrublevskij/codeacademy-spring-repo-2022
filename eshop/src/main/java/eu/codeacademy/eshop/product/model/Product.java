@@ -10,7 +10,7 @@ import java.util.UUID;
 @Builder
 public class Product {
 
-    private UUID uuid;
+    private UUID productId;
     private String name;
     private Integer quantity;
     private BigDecimal price;

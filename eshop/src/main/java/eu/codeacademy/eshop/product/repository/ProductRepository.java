@@ -16,7 +16,7 @@ public class ProductRepository {
 
     public void save(Product product) {
         UUID id = UUID.randomUUID();
-        product.setUuid(id);
+        product.setProductId(id);
         products.put(id, product);
     }
 
@@ -29,7 +29,7 @@ public class ProductRepository {
     }
 
     public void update(Product product) {
-        products.put(product.getUuid(), product);
+        products.put(product.getProductId(), product);
     }
 
     public void delete(UUID uuid) {

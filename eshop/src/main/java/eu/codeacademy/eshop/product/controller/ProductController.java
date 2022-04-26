@@ -6,9 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.UUID;
 
@@ -40,15 +40,14 @@ public class ProductController {
         return "products";
     }
 
-    @GetMapping("/update")
-    public String getUpdateProduct(Model model, @RequestParam UUID id) {
+    @GetMapping("/{productId}/update")
+    public String getUpdateProduct(Model model, @PathVariable("productId") UUID id) {
         model.addAttribute("product", productService.getProductByUUID(id));
 
         return "product";
     }
 
-    //TODO: find reason why uuid came null without using hidden fields
-    @PostMapping("/update")
+    @PostMapping("/{productId}/update")
     public String getUpdateProduct(Model model, Product product) {
         productService.updateProduct(product);
         model.addAttribute("productList", productService.getProducts());
@@ -56,8 +55,8 @@ public class ProductController {
         return "products";
     }
 
-    @GetMapping("/delete")
-    public String deleteProduct(Model model, @RequestParam UUID id) {
+    @GetMapping("/{productId}/delete")
+    public String deleteProduct(Model model, @PathVariable("productId") UUID id) {
         productService.deleteProduct(id);
         model.addAttribute("productList", productService.getProducts());
 
