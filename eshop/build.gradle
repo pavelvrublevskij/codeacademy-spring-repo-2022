@@ -20,12 +20,16 @@ repositories {
 
 ext {
     devToolsVersion = '2.6.7'
+    h2Version = '2.1.212'
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation "org.springframework.boot:spring-boot-devtools:${devToolsVersion}"
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation "com.h2database:h2:${h2Version}"
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
