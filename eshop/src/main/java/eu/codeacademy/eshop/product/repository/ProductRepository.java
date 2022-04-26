@@ -1,9 +1,12 @@
 package eu.codeacademy.eshop.product.repository;
 
 import eu.codeacademy.eshop.product.model.Product;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +15,13 @@ import java.util.UUID;
 @Repository
 public class ProductRepository {
 
-    private final Map<UUID, Product> products = new HashMap<>();
+    private final Map<UUID, Product> products;
+    private final JdbcTemplate jdbcTemplate;
+
+    public ProductRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+        this.products = new HashMap<>();
+    }
 
     public void save(Product product) {
         UUID id = UUID.randomUUID();
@@ -21,7 +30,18 @@ public class ProductRepository {
     }
 
     public List<Product> getProducts() {
-        return new ArrayList<>(products.values());
+        return jdbcTemplate.query("SELECT * FROM PRODUCT", new RowMapper<Product>() {
+            @Override
+            public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return Product.builder()
+                        .productId(UUID.fromString(rs.getString("product_id")))
+                        .name(rs.getString("name"))
+                        .quantity(rs.getInt("quantity_in_stock"))
+                        .price(rs.getBigDecimal("price"))
+                        .description(rs.getString("description"))
+                        .build();
+            }
+        });
     }
 
     public Product getProductByUUID(UUID id) {
