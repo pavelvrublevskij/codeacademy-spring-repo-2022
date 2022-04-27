@@ -18,9 +18,12 @@
         <thead>
         <tr>
             <th>
-                <a th:href="@{/products/list(sort='name,ASC')}">
+                <a
+                        th:with="direction=${productPage.sort.getOrderFor('name')?.direction}"
+                        th:href="@{/products/list(sort='name,' + ${direction?.isAscending() ? 'DESC' : 'ASC'})}">
                     Name
-                    <i class="fa-solid fa-arrow-down-a-z"
+                    <i class="fa-solid"
+                       th:classappend="${direction?.isAscending() ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
                        th:if="${productPage.sort.getOrderFor('name') ne null}"></i>
                 </a>
             </th>
