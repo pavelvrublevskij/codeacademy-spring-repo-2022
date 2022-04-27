@@ -5,6 +5,8 @@ import eu.codeacademy.eshop.product.entity.Product;
 import eu.codeacademy.eshop.product.mapper.ProductMapper;
 import eu.codeacademy.eshop.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +29,11 @@ public class ProductService {
                 .price(productDto.getPrice())
                 .description(productDto.getDescription())
                 .build());
+    }
+
+    public Page<ProductDto> getProductPaginated(Pageable pageable) {
+        return productRepository.findAll(pageable)
+                .map(mapper::mapTo);
     }
 
     public List<ProductDto> getProducts() {

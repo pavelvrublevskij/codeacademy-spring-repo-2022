@@ -3,6 +3,7 @@ package eu.codeacademy.eshop.product.controller;
 import eu.codeacademy.eshop.product.dto.ProductDto;
 import eu.codeacademy.eshop.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,8 +36,8 @@ public class ProductController {
     }
 
     @GetMapping("/list")
-    public String getProducts(Model model) {
-        model.addAttribute("productList", productService.getProducts());
+    public String getProducts(Model model, Pageable pageable) {
+        model.addAttribute("productList", productService.getProductPaginated(pageable));
 
         return "products";
     }
