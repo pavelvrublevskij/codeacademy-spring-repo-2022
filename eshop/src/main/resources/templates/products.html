@@ -3,7 +3,8 @@
       lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
     <title>Product list</title>
 </head>
@@ -11,34 +12,37 @@
 <h2>Products</h2>
 <div th:if="${#lists.isEmpty(productPage)}">Product list is empty</div>
 <div th:unless="${#lists.isEmpty(productPage)}"
-    class="container">
+     class="container">
     <span th:text="'Viso irasu: ' + ${productPage.totalElements}"></span><br/>
     <span th:text="'Viso puslapiu: ' + ${productPage.totalPages}"></span>
     <table class="table table-dark">
         <thead>
         <tr>
             <th>
-                <a
-                        th:with="direction=${productPage.sort.getOrderFor('name')?.direction}"
-                        th:href="@{/products/list(sort='name,' + ${direction?.isAscending() ? 'DESC' : 'ASC'})}">
+                <a th:with="direction=${productPage.sort.getOrderFor('name')?.direction}"
+                   th:href="@{/products/list(sort='name,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} )}">
                     Name
                     <i class="fa-solid"
-                       th:classappend="${direction?.isAscending() ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
-                       th:if="${productPage.sort.getOrderFor('name') ne null}"></i>
+                       th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
+                       th:if="${direction ne null}"></i>
                 </a>
             </th>
             <th>
-                <a th:href="@{/products/list(sort='countOfStock,ASC')}">
+                <a th:with="direction=${productPage.sort.getOrderFor('countOfStock')?.direction}"
+                   th:href="@{/products/list(sort='countOfStock,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} )}">
                     Quantity
-                    <i class="fa-solid fa-arrow-down-1-9"
-                       th:if="${productPage.sort.getOrderFor('countOfStock') ne null}"></i>
+                    <i class="fa-solid"
+                       th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-1-9' : 'fa-arrow-up-9-1'}"
+                       th:if="${direction ne null}"></i>
                 </a>
             </th>
             <th>
-                <a th:href="@{/products/list(sort='price,ASC')}">
+                <a th:with="direction=${productPage.sort.getOrderFor('name')?.direction}"
+                   th:href="@{/products/list(sort='name,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} )}">
                     Price
-                    <i class="fa-solid fa-arrow-down-1-9"
-                       th:if="${productPage.sort.getOrderFor('price') ne null}"></i>
+                    <i class="fa-solid"
+                       th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-1-9' : 'fa-arrow-up-9-1'}"
+                       th:if="${direction ne null}"></i>
                 </a>
             </th>
             <th></th>
@@ -46,7 +50,8 @@
         </thead>
         <tbody>
         <tr th:each="product: ${productPage}">
-            <td><a th:href="@{/products/{productId}/update(productId=${product.productId})}" th:text="${product.name}"></a></td>
+            <td><a th:href="@{/products/{productId}/update(productId=${product.productId})}"
+                   th:text="${product.name}"></a></td>
             <td th:text="${product.quantity}"></td>
             <td th:text="${product.price}"></td>
             <td><a th:href="@{/products/{productId}/delete(productId=${product.productId})}">Delete</a></td>
