@@ -53,7 +53,7 @@ public class ProductController {
     @PostMapping("/{productId}/update")
     public String getUpdateProduct(Model model, ProductDto product) {
         productService.updateProduct(product);
-        model.addAttribute("productList", productService.getProducts());
+        model.addAttribute("productPage", productService.getProducts());
 
         return "products";
     }
@@ -61,7 +61,7 @@ public class ProductController {
     @GetMapping("/{productId}/delete")
     public String deleteProduct(Model model, @PathVariable("productId") UUID id) {
         productService.deleteProduct(id);
-        model.addAttribute("productList", productService.getProducts());
+        model.addAttribute("productPage", productService.getProducts());
 
         return "products";
     }
