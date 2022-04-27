@@ -1,5 +1,5 @@
 CREATE TABLE PRODUCT (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     product_id UUID NOT NULL,
     name VARCHAR(20) NOT NULL,
     quantity_in_stock INT NOT NULL,

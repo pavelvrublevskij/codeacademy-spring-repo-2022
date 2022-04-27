@@ -29,6 +29,7 @@ public class ProductController {
     @PostMapping
     public String createProduct(Model model, ProductDto product) {
         productService.addProduct(product);
+        model.addAttribute("product", ProductDto.builder().build());
         model.addAttribute("message", "Product added successfully!");
         return "product";
     }
