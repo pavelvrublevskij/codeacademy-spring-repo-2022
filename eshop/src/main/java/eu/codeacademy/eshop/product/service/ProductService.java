@@ -45,12 +45,9 @@ public class ProductService {
     }
 
     public ProductDto getProductByUUID(UUID id) {
-        Optional<Product> product = productRepository.findByProductId(id);
-        if (product.isPresent()) {
-            return mapper.mapTo(product.get());
-        }
-
-        throw new ProductNotFoundException();
+        return productRepository.findByProductId(id)
+                .map(mapper::mapTo)
+                .orElseThrow(ProductNotFoundException::new);
     }
 
     @Transactional
