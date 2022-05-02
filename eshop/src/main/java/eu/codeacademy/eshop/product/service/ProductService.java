@@ -2,6 +2,7 @@ package eu.codeacademy.eshop.product.service;
 
 import eu.codeacademy.eshop.product.dto.ProductDto;
 import eu.codeacademy.eshop.product.entity.Product;
+import eu.codeacademy.eshop.product.exception.ProductNotFoundException;
 import eu.codeacademy.eshop.product.mapper.ProductMapper;
 import eu.codeacademy.eshop.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -43,23 +45,33 @@ public class ProductService {
     }
 
     public ProductDto getProductByUUID(UUID id) {
-        return mapper.mapTo(productRepository.findByProductId(id));
+        Optional<Product> product = productRepository.findByProductId(id);
+        if (product.isPresent()) {
+            return mapper.mapTo(product.get());
+        }
+
+        throw new ProductNotFoundException();
     }
 
     @Transactional
     public void updateProduct(ProductDto productDto) {
-        Product product = productRepository.findByProductId(productDto.getProductId()).toBuilder()
-                .name(productDto.getName())
-                .countOfStock(productDto.getQuantity())
-                .price(productDto.getPrice())
-                .description(productDto.getDescription())
-                .build();
+        Optional<Product> productOptional = productRepository.findByProductId(productDto.getProductId());
 
-        productRepository.save(product);
+        if (productOptional.isPresent()) {
+            Product product = productOptional.get().toBuilder()
+                    .name(productDto.getName())
+                    .countOfStock(productDto.getQuantity())
+                    .price(productDto.getPrice())
+                    .description(productDto.getDescription())
+                    .build();
+
+            productRepository.save(product);
+        }
     }
 
     @Transactional
     public void deleteProduct(UUID uuid) {
-        productRepository.deleteById(productRepository.findByProductId(uuid).getId());
+        Optional<Product> product = productRepository.findByProductId(uuid);
+        product.ifPresent(value -> productRepository.deleteById(value.getId()));
     }
 }
