@@ -7,5 +7,9 @@ VALUES
     ('e4dbc123-a7c2-4bee-a519-e1b9ba991345', 'Chicken Nuggets', 150, 0.99, 'Small piece of chicken'),
     ('e4dbc123-a7c2-4bee-a519-e1b9ba991346', 'Cola', 200, 19.99, 'Dark soda'),
     ('e4dbc123-a7c2-4bee-a519-e1b9ba991347', 'Ice cream', 500, 2.99, 'Vanilla'),
-    ('e4dbc123-a7c2-4bee-a519-e1b9ba991348', 'Cheese Burger', 20, 2.49, 'Hamburger with chseese'),
+    ('e4dbc123-a7c2-4bee-a519-e1b9ba991348', 'a', 20, 2.49, 'Hamburger with chseese'),
+    ('e4dbc123-a7c2-4bee-a519-e1b9ba991358', 'A', 20, 2.49, 'Hamburger with chseese'),
+    ('e4dbc123-a7c2-4bee-a519-e1b9ba991368', 'b', 20, 2.49, 'Hamburger with chseese'),
+    ('e4dbc123-a7c2-4bee-a519-e1b9ba991378', 'B', 20, 2.49, 'Hamburger with chseese'),
+    ('e4dbc123-a7c2-4bee-a519-e1b9ba991388', 'Cheese Burger', 20, 2.49, 'Hamburger with chseese'),
     ('e4dbc123-a7c2-4bee-a519-e1b9ba991349', 'Hamburger', 16, 1.99, 'Bun and meat');
