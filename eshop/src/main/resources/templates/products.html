@@ -37,8 +37,8 @@
                 </a>
             </th>
             <th>
-                <a th:with="direction=${productPage.sort.getOrderFor('name')?.direction}"
-                   th:href="@{/products/list(sort='name,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} )}">
+                <a th:with="direction=${productPage.sort.getOrderFor('price')?.direction}"
+                   th:href="@{/products/list(sort='price,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} )}">
                     Price
                     <i class="fa-solid"
                        th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-1-9' : 'fa-arrow-up-9-1'}"
