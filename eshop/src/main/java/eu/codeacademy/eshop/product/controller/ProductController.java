@@ -55,16 +55,14 @@ public class ProductController {
     @PostMapping("/{productId}/update")
     public String getUpdateProduct(Model model, ProductDto product) {
         productService.updateProduct(product);
-        model.addAttribute("productPage", productService.getProducts());
 
-        return "products";
+        return "redirect:/products/list";
     }
 
     @GetMapping("/{productId}/delete")
     public String deleteProduct(Model model, @PathVariable("productId") UUID id) {
         productService.deleteProduct(id);
-        model.addAttribute("productPage", productService.getProducts());
 
-        return "products";
+        return "redirect:/products/list";
     }
 }
