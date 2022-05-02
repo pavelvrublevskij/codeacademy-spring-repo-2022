@@ -10,15 +10,16 @@
 </head>
 <body>
 <h2>Products</h2>
-<div th:if="${#lists.isEmpty(productPage)}">Product list is empty</div>
-<div th:unless="${#lists.isEmpty(productPage)}"
+<div th:if="${not productPage.hasContent()}">Product list is empty</div>
+
+<div th:if="${productPage.hasContent()}"
      class="container">
     <span th:text="'Viso irasu: ' + ${productPage.totalElements}"></span><br/>
     <span th:text="'Viso puslapiu: ' + ${productPage.totalPages}"></span>
-    <table class="table table-dark">
+    <table class="table table-striped">
         <thead>
         <tr>
-            <th>
+            <th scope="col">
                 <a th:with="direction=${productPage.sort.getOrderFor('name')?.direction}"
                    th:href="@{/products/list(sort='name,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase' )}">
                     Name
@@ -27,7 +28,7 @@
                        th:if="${direction ne null}"></i>
                 </a>
             </th>
-            <th>
+            <th scope="col">
                 <a th:with="direction=${productPage.sort.getOrderFor('countOfStock')?.direction}"
                    th:href="@{/products/list(sort='countOfStock,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} )}">
                     Quantity
@@ -36,7 +37,7 @@
                        th:if="${direction ne null}"></i>
                 </a>
             </th>
-            <th>
+            <th scope="col">
                 <a th:with="direction=${productPage.sort.getOrderFor('price')?.direction}"
                    th:href="@{/products/list(sort='price,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} )}">
                     Price
@@ -45,7 +46,7 @@
                        th:if="${direction ne null}"></i>
                 </a>
             </th>
-            <th></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -54,7 +55,7 @@
                    th:text="${product.name}"></a></td>
             <td th:text="${product.quantity}"></td>
             <td th:text="${product.price}"></td>
-            <td><a th:href="@{/products/{productId}/delete(productId=${product.productId})}">Delete</a></td>
+            <td><a class="btn btn-danger"th:href="@{/products/{productId}/delete(productId=${product.productId})}">Delete</a></td>
         </tr>
         </tbody>
     </table>
