@@ -23,8 +23,9 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping
-    public String openCrateProductForm(Model model) {
+    public String openCrateProductForm(Model model, String message) {
         model.addAttribute("product", ProductDto.builder().build());
+        model.addAttribute("message", message);
 
         return "product";
     }
@@ -33,8 +34,7 @@ public class ProductController {
     public String createProduct(Model model, ProductDto product) {
         productService.addProduct(product);
         model.addAttribute("product", ProductDto.builder().build());
-        model.addAttribute("message", "Product added successfully!");
-        return "product";
+        return "redirect:/products?message=Product added successfully!";
     }
 
     @GetMapping("/list")
