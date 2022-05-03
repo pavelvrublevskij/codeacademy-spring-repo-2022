@@ -29,8 +29,8 @@
             <th scope="col">
                 <a th:with="direction=${productsPage.sort.getOrderFor('name')?.direction}"
                    th:href="@{/products/list(sort='name,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase' )}"
-                   th:text="#{products.name}"
                 >
+                    <span th:text="#{products.name}"></span>
                     <i class="fa-solid"
                        th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
                        th:if="${direction ne null}"></i>
@@ -39,8 +39,8 @@
             <th scope="col">
                 <a th:with="direction=${productsPage.sort.getOrderFor('countOfStock')?.direction}"
                    th:href="@{/products/list(sort='countOfStock,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} )}"
-                   th:text="#{products.quantity}"
                 >
+                    <span th:text="#{products.quantity}"></span>
                     <i class="fa-solid"
                        th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-1-9' : 'fa-arrow-up-9-1'}"
                        th:if="${direction ne null}"></i>
@@ -49,8 +49,8 @@
             <th scope="col">
                 <a th:with="direction=${productsPage.sort.getOrderFor('price')?.direction}"
                    th:href="@{/products/list(sort='price,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} )}"
-                   th:text="#{products.price}"
                 >
+                    <span th:text="#{products.price}"></span>
                     <i class="fa-solid"
                        th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-1-9' : 'fa-arrow-up-9-1'}"
                        th:if="${direction ne null}"></i>
