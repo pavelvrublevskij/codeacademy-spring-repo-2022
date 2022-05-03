@@ -36,7 +36,7 @@ public class ProductController {
     public String createProduct(Model model, ProductDto product) {
         productService.addProduct(product);
         model.addAttribute("product", ProductDto.builder().build());
-        return "redirect:/products?message=create.product.message.success";
+        return "redirect:/products?message=create.product.message.success2";
     }
 
     @GetMapping("/list")

@@ -18,8 +18,11 @@ public class MessageService {
         try {
             return messageSource.getMessage(key, null, LocaleContextHolder.getLocale());
         } catch (NoSuchMessageException e) {
-            log.error("Key " + key + " does not exits");
-            e.printStackTrace();
+            if (key != null && !key.equals("")) {
+                log.error("Key " + key + " does not exits");
+                e.printStackTrace();
+                return String.format("?%s?", key);
+            }
         }
 
         return "";
