@@ -72,13 +72,15 @@
     <span th:text="#{products.all(${productsPage.totalElements})}"></span>
 
     <nav class="d-flex justify-content-center">
-        <ul class="pagination">
+        <ul class="pagination"
+            th:with="
+                orderParam=${productsPage.sort.iterator().hasNext() ? productsPage.sort.iterator().next : null},
+                sortParam=${orderParam.property + ',' + orderParam.direction + ',ignorecase'}">
             <li class="page-item"
                 th:classappend="${!productsPage.hasPrevious()} ? 'disabled'"
             >
                 <a class="page-link"
-                   th:with="order=${productsPage.sort.iterator().hasNext() ? productsPage.sort.iterator().next : null}"
-                   th:href="@{/products/list(page=${productsPage.number} - 1,sort=${order.property + ',' + order.direction + ',ignorecase'})}"
+                   th:href="@{/products/list(page=${productsPage.number} - 1,sort=${sortParam})}"
                    th:text="#{products.previous}"
                 ></a>
             </li>
@@ -87,16 +89,14 @@
                 th:classappend="${pageNumber == productsPage.number ? 'active' : ''}"
             >
                 <a class="page-link"
-                   th:with="order=${productsPage.sort.iterator().hasNext() ? productsPage.sort.iterator().next : null}"
-                   th:href="@{/products/list(page=${pageNumber},sort=${order.property + ',' + order.direction + ',ignorecase'})}"
+                   th:href="@{/products/list(page=${pageNumber},sort=${sortParam})}"
                    th:text="${pageNumber + 1}"></a>
             </li>
             <li class="page-item"
                 th:classappend="${!productsPage.hasNext()} ? 'disabled'"
             >
                 <a class="page-link"
-                   th:with="order=${productsPage.sort.iterator().hasNext() ? productsPage.sort.iterator().next : null}"
-                   th:href="@{/products/list(page=${productsPage.number} + 1,sort=${order.property + ',' + order.direction + ',ignorecase'})}"
+                   th:href="@{/products/list(page=${productsPage.number} + 1,sort=${sortParam})}"
                    th:text="#{products.next}"
                 ></a>
             </li>
