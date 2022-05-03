@@ -18,16 +18,16 @@
     <option value="US" th:text="English"></option>
 </select>
 <h2 th:text="#{products.title}"></h2>
-<div th:if="${not productPage.hasContent()}" th:text="#{products.emptyMessage}">></div>
+<div th:if="${not productsPage.hasContent()}" th:text="#{products.emptyMessage}">></div>
 
-<div th:if="${productPage.hasContent()}"
+<div th:if="${productsPage.hasContent()}"
      class="container">
-    <span th:text="#{products.all(${productPage.totalElements})}"></span>
+    <span th:text="#{products.all(${productsPage.totalElements})}"></span>
     <table class="table table-striped">
         <thead>
         <tr>
             <th scope="col">
-                <a th:with="direction=${productPage.sort.getOrderFor('name')?.direction}"
+                <a th:with="direction=${productsPage.sort.getOrderFor('name')?.direction}"
                    th:href="@{/products/list(sort='name,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase' )}"
                    th:text="#{products.name}"
                 >
@@ -37,7 +37,7 @@
                 </a>
             </th>
             <th scope="col">
-                <a th:with="direction=${productPage.sort.getOrderFor('countOfStock')?.direction}"
+                <a th:with="direction=${productsPage.sort.getOrderFor('countOfStock')?.direction}"
                    th:href="@{/products/list(sort='countOfStock,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} )}"
                    th:text="#{products.quantity}"
                 >
@@ -47,7 +47,7 @@
                 </a>
             </th>
             <th scope="col">
-                <a th:with="direction=${productPage.sort.getOrderFor('price')?.direction}"
+                <a th:with="direction=${productsPage.sort.getOrderFor('price')?.direction}"
                    th:href="@{/products/list(sort='price,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} )}"
                    th:text="#{products.price}"
                 >
@@ -60,7 +60,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="product: ${productPage}">
+        <tr th:each="product: ${productsPage}">
             <td><a th:href="@{/products/{productId}/update(productId=${product.productId})}"
                    th:text="${product.name}"></a></td>
             <td th:text="${product.quantity}"></td>
@@ -69,29 +69,29 @@
         </tr>
         </tbody>
     </table>
-    <span th:text="#{products.all(${productPage.totalElements})}"></span>
+    <span th:text="#{products.all(${productsPage.totalElements})}"></span>
 
     <nav class="d-flex justify-content-center">
         <ul class="pagination">
             <li class="page-item"
-                th:classappend="${!productPage.hasPrevious()} ? 'disabled'"
+                th:classappend="${!productsPage.hasPrevious()} ? 'disabled'"
             >
                 <a class="page-link"
-                   th:href="@{/products/list(page=${productPage.number} - 1)}"
+                   th:href="@{/products/list(page=${productsPage.number} - 1)}"
                    th:text="#{products.previous}"
                 ></a>
             </li>
             <li class="page-item"
-                th:each="pageNumber: ${#numbers.sequence(0, productPage.totalPages - 1)}"
-                th:classappend="${pageNumber == productPage.number ? 'active' : ''}"
+                th:each="pageNumber: ${#numbers.sequence(0, productsPage.totalPages - 1)}"
+                th:classappend="${pageNumber == productsPage.number ? 'active' : ''}"
             >
                 <a class="page-link" th:href="@{/products/list(page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
             </li>
             <li class="page-item"
-                th:classappend="${!productPage.hasNext()} ? 'disabled'"
+                th:classappend="${!productsPage.hasNext()} ? 'disabled'"
             >
                 <a class="page-link"
-                   th:href="@{/products/list(page=${productPage.number} + 1)}"
+                   th:href="@{/products/list(page=${productsPage.number} + 1)}"
                    th:text="#{products.next}"
                 ></a>
             </li>
