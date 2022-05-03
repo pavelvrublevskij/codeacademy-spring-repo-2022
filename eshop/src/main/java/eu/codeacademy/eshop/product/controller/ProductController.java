@@ -1,6 +1,7 @@
 package eu.codeacademy.eshop.product.controller;
 
 import eu.codeacademy.eshop.product.dto.ProductDto;
+import eu.codeacademy.eshop.product.helper.MessageService;
 import eu.codeacademy.eshop.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -21,11 +22,12 @@ import java.util.UUID;
 public class ProductController {
 
     private final ProductService productService;
+    private final MessageService messageService;
 
     @GetMapping
     public String openCrateProductForm(Model model, String message) {
         model.addAttribute("product", ProductDto.builder().build());
-        model.addAttribute("message", message);
+        model.addAttribute("message", messageService.getMessage(message));
 
         return "product";
     }
@@ -34,7 +36,7 @@ public class ProductController {
     public String createProduct(Model model, ProductDto product) {
         productService.addProduct(product);
         model.addAttribute("product", ProductDto.builder().build());
-        return "redirect:/products?message=Product added successfully!";
+        return "redirect:/products?message=create.product.message.success";
     }
 
     @GetMapping("/list")
