@@ -21,6 +21,7 @@ repositories {
 ext {
     devToolsVersion = '2.6.7'
     h2Version = '2.1.212'
+    postgresVersion = '42.3.4'
 }
 
 dependencies {
@@ -29,6 +30,7 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-devtools:${devToolsVersion}"
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation "com.h2database:h2:${h2Version}"
+    implementation "org.postgresql:postgresql:${postgresVersion}"
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
