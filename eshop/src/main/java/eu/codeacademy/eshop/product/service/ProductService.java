@@ -25,10 +25,10 @@ public class ProductService {
 
     public void addProduct(ProductDto productDto) {
         productRepository.save(Product.builder()
-                .productId(UUID.randomUUID())
                 .name(productDto.getName())
                 .countOfStock(productDto.getQuantity())
                 .price(productDto.getPrice())
+                .productId(UUID.randomUUID())
                 .description(productDto.getDescription())
                 .build());
     }
