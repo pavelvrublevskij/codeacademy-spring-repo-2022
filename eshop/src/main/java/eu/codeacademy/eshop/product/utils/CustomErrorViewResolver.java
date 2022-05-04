@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Map;
 
 @Component
@@ -16,6 +17,8 @@ public class CustomErrorViewResolver implements ErrorViewResolver {
             return new ModelAndView("error/404");
         }
 
-        return new ModelAndView("customErrorPage");
+        Map<String, String> myMap = new HashMap<>();
+        myMap.put("myCustomText", "Is my any Text or Object");
+        return new ModelAndView("customErrorPage", myMap);
     }
 }
