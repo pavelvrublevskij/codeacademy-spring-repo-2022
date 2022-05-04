@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4xx Error page</title>
+</head>
+<body>
+<h1 th:text="'Response code ' + ${status} + ' ' + ${path}"></h1>
+<h2>All 400-499 errors instead 404</h2>
+</body>
+</html>
