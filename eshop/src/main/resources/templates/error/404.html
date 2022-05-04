@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>404 Error page</title>
+</head>
+<body>
+<h1 th:text="'Page not found ' + ${path}"></h1>
+<img th:src="@{/images/404.jpeg}"/>
+</body>
+</html>
