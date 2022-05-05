@@ -29,7 +29,7 @@ public class ProductController {
         model.addAttribute("product", ProductDto.builder().build());
         model.addAttribute("message", messageService.getMessage(message));
 
-        return "product";
+        return "product/product";
     }
 
     @PostMapping
@@ -44,14 +44,14 @@ public class ProductController {
             Model model, @PageableDefault(size = 7, sort = {"name"}, direction = Sort.Direction.ASC) Pageable pageable) {
         model.addAttribute("productsPage", productService.getProductPaginated(pageable));
 
-        return "products";
+        return "product/products";
     }
 
     @GetMapping("/{productId}/update")
     public String getUpdateProduct(Model model, @PathVariable("productId") UUID id) {
         model.addAttribute("product", productService.getProductByUUID(id));
 
-        return "product";
+        return "product/product";
     }
 
     @PostMapping("/{productId}/update")
