@@ -7,5 +7,6 @@
 <body>
 <h1 th:text="#{error.pageNotFound} + ' ' + ${path}"></h1>
 <img th:src="@{/images/404.jpeg}"/>
+<div th:replace="fragments/main :: footer"></div>
 </body>
 </html>
