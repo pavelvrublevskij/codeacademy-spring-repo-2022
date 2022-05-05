@@ -6,7 +6,7 @@
     <title>404 Error page</title>
 </head>
 <body>
-<h1 th:text="'Page not found ' + ${path}"></h1>
+<h1 th:text="#{error.pageNotFound} + ' ' + ${path}"></h1>
 <img th:src="@{/images/404.jpeg}"/>
 </body>
 </html>
