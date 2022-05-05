@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       lang="en">
-<head th:replace="fragments/main :: head">
-    <title>Create Product</title>
-</head>
+<head th:replace="fragments/main :: head(#{create.product.title})"></head>
 <body>
 
 <div th:replace="fragments/main :: navbar">Cia yra navbar (menu)</div>
