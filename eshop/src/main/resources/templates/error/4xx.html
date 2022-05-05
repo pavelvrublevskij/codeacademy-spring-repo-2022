@@ -5,8 +5,13 @@
     <title>4xx Error page</title>
 </head>
 <body>
+
+<div th:replace="fragments/main :: navbar">Cia yra navbar (menu)</div>
+
 <h1 th:text="'Response code ' + ${status} + ' ' + ${path}"></h1>
 <h2>All 400-499 errors instead 404</h2>
+
 <div th:replace="fragments/main :: footer"></div>
+
 </body>
 </html>

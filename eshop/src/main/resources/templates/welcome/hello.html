@@ -5,9 +5,15 @@
     <title>Welcome page</title>
 </head>
 <body>
-    <h1 th:text="${'Hello, '+ param.name}"></h1>
-    <h2 th:text="#{hello.world}"></h2>
-    <h3 th:text="${modelDate}"></h3>
-    <div th:replace="fragments/main :: footer"></div>
+
+<div th:replace="fragments/main :: navbar">Cia yra navbar (menu)</div>
+
+<h1 th:text="${'Hello, '+ param.name}"></h1>
+<h2 th:text="#{hello.world}"></h2>
+
+<h3 th:text="${modelDate}"></h3>
+
+<div th:replace="fragments/main :: footer"></div>
+
 </body>
 </html>

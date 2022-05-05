@@ -4,7 +4,12 @@
     <title>Product Not Found</title>
 </head>
 <body>
+
+<div th:replace="fragments/main :: navbar">Cia yra navbar (menu)</div>
+
 <h1 th:text="'Nerastas produktas: '+ ${productId}"></h1>
+
 <div th:replace="fragments/main :: footer"></div>
+
 </body>
 </html>
