@@ -1,6 +1,7 @@
 package eu.codeacademy.eshop.product.controller;
 
 import eu.codeacademy.eshop.product.dto.ProductDto;
+import eu.codeacademy.eshop.product.exception.ProductNotFoundException;
 import eu.codeacademy.eshop.product.helper.MessageService;
 import eu.codeacademy.eshop.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -66,5 +68,11 @@ public class ProductController {
         productService.deleteProduct(id);
 
         return "redirect:/products/list";
+    }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    public String productNotFound(ProductNotFoundException e, Model model) {
+        model.addAttribute("productId", e.getProductId());
+        return "product/error/productNotFound";
     }
 }
