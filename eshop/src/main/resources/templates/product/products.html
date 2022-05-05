@@ -15,36 +15,9 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col">
-                <a th:with="direction=${productsPage.sort.getOrderFor('name')?.direction}"
-                   th:href="@{/products/list(sort='name,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase' )}"
-                >
-                    <span th:text="#{products.name}"></span>
-                    <i class="fa-solid"
-                       th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-a-z' : 'fa-arrow-up-z-a'}"
-                       th:if="${direction ne null}"></i>
-                </a>
-            </th>
-            <th scope="col">
-                <a th:with="direction=${productsPage.sort.getOrderFor('countOfStock')?.direction}"
-                   th:href="@{/products/list(sort='countOfStock,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} )}"
-                >
-                    <span th:text="#{products.quantity}"></span>
-                    <i class="fa-solid"
-                       th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-1-9' : 'fa-arrow-up-9-1'}"
-                       th:if="${direction ne null}"></i>
-                </a>
-            </th>
-            <th scope="col">
-                <a th:with="direction=${productsPage.sort.getOrderFor('price')?.direction}"
-                   th:href="@{/products/list(sort='price,' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} )}"
-                >
-                    <span th:text="#{products.price}"></span>
-                    <i class="fa-solid"
-                       th:classappend="${direction?.name() eq 'ASC' ? 'fa-arrow-down-1-9' : 'fa-arrow-up-9-1'}"
-                       th:if="${direction ne null}"></i>
-                </a>
-            </th>
+            <th scope="col"><a th:replace="fragments/main :: sortColumn(data=${productsPage}, name='name', path=@{/products/list}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{products.name})"></a></th>
+            <th scope="col"><a th:replace="fragments/main :: sortColumn(data=${productsPage}, name='countOfStock', path=@{/products/list}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.quantity})"></a></th>
+            <th scope="col"><a th:replace="fragments/main :: sortColumn(data=${productsPage}, name='price', path=@{/products/list}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.price})"></a></th>
             <th scope="col"></th>
         </tr>
         </thead>

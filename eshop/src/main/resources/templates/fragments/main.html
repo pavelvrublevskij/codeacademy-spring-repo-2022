@@ -45,6 +45,17 @@
     </div>
 </nav>
 
+
+<a th:fragment="sortColumn(data, name, path, sortUp, sortDown, fieldName)"
+   th:with="direction=${data.sort.getOrderFor(name)?.direction}"
+   th:href="@{*{path}(sort=*{name} + ',' + ${direction?.name() eq 'ASC' ? 'DESC' : 'ASC'} + ',ignorecase' )}"
+>
+    <span th:text="*{fieldName}"></span>
+    <i class="fa-solid"
+       th:classappend="${direction?.name() eq 'ASC' ? sortDown: sortUp}"
+       th:if="${direction ne null}"></i>
+</a>
+
 <div th:fragment="footer">
     <span class="text-muted">CodeAcademy. Spring MVC. All Rights reserved </span>
 </div>
