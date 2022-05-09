@@ -6,29 +6,38 @@
 
 <div th:replace="fragments/layout :: navbar(rootPath='products')">Cia yra navbar (menu)</div>
 
-    <h3 th:text="#{create.product}"></h3>
-    <form method="post" th:object="${productDto}">
-        <div class="mb-3">
-            <label th:text="#{create.product.name}"></label>
-            <input type="text" placeholder="Write Name" th:field="*{name}"><br/>
-            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-        </div>
+<h3 th:text="#{create.product}"></h3>
+<form method="post" th:object="${productDto}">
+    <div class="mb-3">
+        <label th:text="#{create.product.name}"></label>
+        <input type="text" placeholder="Write Name" th:field="*{name}"><br/>
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    </div>
 
+    <div class="mb-3">
         <label th:text="#{create.product.quantity}"></label>
         <input type="number" placeholder="Write Quantity" th:field="*{quantity}"><br/>
+        <span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></span>
+    </div>
 
+    <div class="mb-3">
         <label th:text="#{create.product.price}"></label>
         <input type="number" placeholder="Write Price" th:field="*{price}"><br/>
+        <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+    </div>
 
+    <div class="mb-3">
         <label th:text="#{create.product.description}"></label>
         <textarea type="text" placeholder="Write Description" th:field="*{description}"></textarea><br/><br/>
+        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+    </div>
 
-        <button type="submit" th:text="#{create.product.add}"></button>
-    </form>
+    <button type="submit" th:text="#{create.product.add}"></button>
+</form>
 
-    <div th:text="${message}"></div>
+<div th:text="${message}"></div>
 
-    <div th:replace="fragments/layout :: footer"></div>
+<div th:replace="fragments/layout :: footer"></div>
 
 </body>
 </html>
