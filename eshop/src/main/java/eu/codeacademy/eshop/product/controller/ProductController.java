@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @Controller
@@ -33,10 +34,10 @@ public class ProductController {
     }
 
     @PostMapping
-    public String createProduct(Model model, ProductDto product) {
+    public String createProduct(Model model, @Valid ProductDto product) {
         productService.addProduct(product);
         model.addAttribute("product", ProductDto.builder().build());
-        return "redirect:/products?message=create.product.message.success2";
+        return "redirect:/products?message=create.product.message.success";
     }
 
     @GetMapping("/list")
