@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       lang="en">
-<head th:replace="fragments/main :: head(#{welcome.title})"></head>
+<head th:replace="fragments/layout :: head(#{welcome.title})"></head>
 <body>
 
-<div th:replace="fragments/main :: navbar(rootPath='')">Cia yra navbar (menu)</div>
+<div th:replace="fragments/layout :: navbar(rootPath='')">Cia yra navbar (menu)</div>
 
 <h1 th:text="${'Welcome to the EShop, '+ param.name}"></h1>
 
 <h3 th:text="'Today is: ' + ${modelDate}"></h3>
 
-<div th:replace="fragments/main :: footer"></div>
+<div th:replace="fragments/layout :: footer"></div>
 
 </body>
 </html>

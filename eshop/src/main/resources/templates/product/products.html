@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       lang="en">
-<head th:replace="fragments/main :: head(#{products.title})"></head>
+<head th:replace="fragments/layout :: head(#{products.title})"></head>
 <body>
 
-<div th:replace="fragments/main :: navbar(rootPath='products/list')">Cia yra navbar (menu)</div>
+<div th:replace="fragments/layout :: navbar(rootPath='products/list')">Cia yra navbar (menu)</div>
 
 <h2 th:text="#{products.title}"></h2>
 <div th:if="${not productsPage.hasContent()}" th:text="#{products.emptyMessage}">></div>
@@ -15,9 +15,9 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col"><a th:replace="fragments/main :: sortColumn(data=${productsPage}, name='name', path=@{/products/list}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{products.name})"></a></th>
-            <th scope="col"><a th:replace="fragments/main :: sortColumn(data=${productsPage}, name='countOfStock', path=@{/products/list}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.quantity})"></a></th>
-            <th scope="col"><a th:replace="fragments/main :: sortColumn(data=${productsPage}, name='price', path=@{/products/list}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.price})"></a></th>
+            <th scope="col"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='name', path=@{/products/list}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{products.name})"></a></th>
+            <th scope="col"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='countOfStock', path=@{/products/list}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.quantity})"></a></th>
+            <th scope="col"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='price', path=@{/products/list}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.price})"></a></th>
             <th scope="col"></th>
         </tr>
         </thead>
@@ -66,7 +66,7 @@
     </nav>
 </div>
 
-<div th:replace="fragments/main :: footer"></div>
+<div th:replace="fragments/layout :: footer"></div>
 
 </body>
 </html>
