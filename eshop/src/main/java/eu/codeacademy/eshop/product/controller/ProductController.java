@@ -28,7 +28,7 @@ public class ProductController {
 
     @GetMapping
     public String openCrateProductForm(Model model, String message) {
-        model.addAttribute("product", ProductDto.builder().build());
+        model.addAttribute("productDto", ProductDto.builder().build());
         model.addAttribute("message", messageService.getMessage(message));
 
         return "product/product";
@@ -36,8 +36,12 @@ public class ProductController {
 
     @PostMapping
     public String createProduct(Model model, @Valid ProductDto product, BindingResult errors) {
+        if (errors.hasErrors()) {
+            return "product/product";
+        }
+
         productService.addProduct(product);
-        model.addAttribute("product", ProductDto.builder().build());
+
         return "redirect:/products?message=create.product.message.success";
     }
 
@@ -51,7 +55,7 @@ public class ProductController {
 
     @GetMapping("/{productId}/update")
     public String getUpdateProduct(Model model, @PathVariable("productId") UUID id) {
-        model.addAttribute("product", productService.getProductByUUID(id));
+        model.addAttribute("productDto", productService.getProductByUUID(id));
 
         return "product/product";
     }
