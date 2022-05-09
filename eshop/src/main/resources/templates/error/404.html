@@ -4,7 +4,7 @@
 <head th:replace="fragments/main :: head('404 Error page')"></head>
 <body>
 
-<div th:replace="fragments/main :: navbar">Cia yra navbar (menu)</div>
+<div th:replace="fragments/main :: navbar('')">Cia yra navbar (menu)</div>
 
 <h1 th:text="#{error.pageNotFound} + ' ' + ${path}"></h1>
 <img th:src="@{/images/404.jpeg}"/>

@@ -4,7 +4,7 @@
 <head th:replace="fragments/main :: head(#{create.product.title})"></head>
 <body>
 
-<div th:replace="fragments/main :: navbar">Cia yra navbar (menu)</div>
+<div th:replace="fragments/main :: navbar(rootPath='products')">Cia yra navbar (menu)</div>
 
     <h3 th:text="#{create.product}"></h3>
     <form method="post" th:object="${product}">
