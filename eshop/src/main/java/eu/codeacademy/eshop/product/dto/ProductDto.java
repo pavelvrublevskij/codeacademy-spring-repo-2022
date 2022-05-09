@@ -14,7 +14,7 @@ public class ProductDto {
 
     private UUID productId;
 
-    @NotBlank(message = "Name negali buti tuscias")
+    @NotBlank //TODO: issiaiskinti kodel neima is vertimu messages.properties
     @Size(
             min = 3,
             max = 40,
