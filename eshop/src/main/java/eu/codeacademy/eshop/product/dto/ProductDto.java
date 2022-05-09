@@ -14,7 +14,7 @@ public class ProductDto {
 
     private UUID productId;
 
-    @NotBlank //TODO: issiaiskinti kodel neima is vertimu messages.properties
+    @NotBlank(message = "{name.blank}")
     @Size(
             min = 3,
             max = 40,
