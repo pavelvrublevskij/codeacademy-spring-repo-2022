@@ -71,4 +71,14 @@ public class ProductService {
         Optional<Product> product = productRepository.findByProductId(uuid);
         product.ifPresent(value -> productRepository.deleteById(value.getId()));
     }
+
+    public Page<ProductDto> getProductByNamePageable(String productName, Pageable pageable) {
+        return productRepository.findProductsByNameIsLikeIgnoreCase(
+                        convertToLikeResult(productName), pageable)
+                .map(mapper::mapTo);
+    }
+
+    private String convertToLikeResult(String value) {
+        return '%' + value + '%';
+    }
 }

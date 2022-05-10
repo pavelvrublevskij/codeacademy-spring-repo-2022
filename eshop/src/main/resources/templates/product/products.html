@@ -9,15 +9,16 @@
 <h2 th:text="#{products.title}"></h2>
 <div th:if="${not productsPage.hasContent()}" th:text="#{products.emptyMessage}">></div>
 
-<div th:if="${productsPage.hasContent()}"
+<div th:with="urlRootPath=${#httpServletRequest.requestURI}">
+    <div th:if="${productsPage.hasContent()}"
      class="container">
     <span th:text="#{products.all(${productsPage.totalElements})}"></span>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='name', path=@{/products/list}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{products.name})"></a></th>
-            <th scope="col"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='countOfStock', path=@{/products/list}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.quantity})"></a></th>
-            <th scope="col"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='price', path=@{/products/list}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.price})"></a></th>
+            <th scope="col"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='name', path=@{*{urlRootPath}}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{products.name})"></a></th>
+            <th scope="col"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='countOfStock', path=@{*{urlRootPath}}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.quantity})"></a></th>
+            <th scope="col"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='price', path=@{*{urlRootPath}}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.price})"></a></th>
             <th scope="col"></th>
         </tr>
         </thead>
@@ -37,12 +38,12 @@
         <ul class="pagination"
             th:with="
                 orderParam=${productsPage.sort.iterator().hasNext() ? productsPage.sort.iterator().next : null},
-                sortParam=${orderParam.property + ',' + orderParam.direction + ',ignorecase'}">
+                sortParam=${orderParam ne null ? orderParam.property + ',' + orderParam.direction + ',ignorecase' : null}">
             <li class="page-item"
                 th:classappend="${!productsPage.hasPrevious()} ? 'disabled'"
             >
                 <a class="page-link"
-                   th:href="@{/products/list(page=${productsPage.number} - 1,sort=${sortParam})}"
+                   th:href="@{*{urlRootPath}(page=${productsPage.number} - 1,sort=${sortParam})}"
                    th:text="#{products.previous}"
                 ></a>
             </li>
@@ -51,19 +52,20 @@
                 th:classappend="${pageNumber == productsPage.number ? 'active' : ''}"
             >
                 <a class="page-link"
-                   th:href="@{/products/list(page=${pageNumber},sort=${sortParam})}"
+                   th:href="@{*{urlRootPath}(page=${pageNumber},sort=${sortParam})}"
                    th:text="${pageNumber + 1}"></a>
             </li>
             <li class="page-item"
                 th:classappend="${!productsPage.hasNext()} ? 'disabled'"
             >
                 <a class="page-link"
-                   th:href="@{/products/list(page=${productsPage.number} + 1,sort=${sortParam})}"
+                   th:href="@{*{urlRootPath}(page=${productsPage.number} + 1,sort=${sortParam})}"
                    th:text="#{products.next}"
                 ></a>
             </li>
         </ul>
     </nav>
+</div>
 </div>
 
 <div th:replace="fragments/layout :: footer"></div>
