@@ -17,4 +17,6 @@ public @interface PhoneNumber {
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
+
+    PhoneType type() default PhoneType.GLOBAL;
 }

@@ -1,6 +1,7 @@
 package eu.codeacademy.eshop.user.dto;
 
 import eu.codeacademy.eshop.validator.PhoneNumber;
+import eu.codeacademy.eshop.validator.PhoneType;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -25,6 +26,6 @@ public class UserDto {
     @NotBlank
     private String zipCode;
 
-    @PhoneNumber
+    @PhoneNumber(type = PhoneType.LOCAL)
     private String phoneNumber;
 }
