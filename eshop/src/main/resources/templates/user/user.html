@@ -29,14 +29,15 @@
         </div>
         <div class="mb-3">
             <label class="form-label" th:text="#{create.user.password}"></label>
-            <input class="form-control" placeholder="Password" th:classappend="${#fields.hasErrors('global')} ? 'is-invalid'"
+            <input class="form-control" placeholder="Password" th:classappend="${#fields.hasGlobalErrors()} ? 'is-invalid'"
                    th:field="*{password}" type="password"/>
-            <span th:if="${#fields.hasErrors('global')}" th:errors="*{global}" class="hasErrors" />
+            <span class="invalid-feedback" th:errors="*{global}" th:if="${#fields.hasGlobalErrors}"/>
         </div>
         <div class="mb-3">
-            <label th:text="#{create.user.password.repeated}" class="form-label"></label>
-            <input type="password" class="form-control" placeholder="Repeat Password" th:field="*{repeatedPassword}"/>
-            <span th:if="${#fields.hasErrors('global')}" th:errors="*{global}" class="hasErrors" />
+            <label class="form-label" th:text="#{create.user.password.repeated}"></label>
+            <input class="form-control" placeholder="Repeat Password" th:classappend="${#fields.hasGlobalErrors()} ? 'is-invalid'"
+                   th:field="*{repeatedPassword}" type="password"/>
+            <span class="invalid-feedback" th:errors="*{global}" th:if="${#fields.hasGlobalErrors()}"/>
         </div>
         <div class="mb-3">
             <label class="form-label" th:text="#{create.user.zip}"></label>

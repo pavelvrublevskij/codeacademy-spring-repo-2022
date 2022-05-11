@@ -9,6 +9,7 @@ public class PasswordCompareValidator implements ConstraintValidator<PasswordCom
 
     @Override
     public boolean isValid(UserDto userDto, ConstraintValidatorContext context) {
-        return userDto.getPassword().equals(userDto.getRepeatedPassword());
+        return !userDto.getPassword().equals("") &&
+                userDto.getPassword().equals(userDto.getRepeatedPassword());
     }
 }
