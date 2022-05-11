@@ -2,7 +2,6 @@ package eu.codeacademy.eshop.product.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
@@ -11,33 +10,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import java.math.BigDecimal;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
-@Getter
-@Builder(toBuilder = true)
-@NoArgsConstructor
+@Builder
 @AllArgsConstructor
-public class Product {
+@NoArgsConstructor
+public class ProductCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private UUID productId;
-
+    @Column(length = 20)
     private String name;
 
-    @Column(name = "quantity_in_stock")
-    private Integer countOfStock;
-
-    private BigDecimal price;
-
-    private String description;
-
-    @ManyToMany
-    private Set<ProductCategory> productCategories;
-
+    @ManyToMany(mappedBy = "productCategories")
+    Set<Product> products;
 }
