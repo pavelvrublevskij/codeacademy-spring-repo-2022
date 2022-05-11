@@ -33,8 +33,6 @@ public class ProductService {
                 .name("NaN")
                 .build();
 
-        productCategoryRepository.save(productCategory);
-
         productRepository.save(Product.builder()
                 .name(productDto.getName())
                 .countOfStock(productDto.getQuantity())
