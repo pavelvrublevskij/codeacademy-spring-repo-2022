@@ -1,7 +1,7 @@
 package eu.codeacademy.eshop.user.controller;
 
 import eu.codeacademy.eshop.user.dto.UserDto;
-import eu.codeacademy.eshop.validator.UserValidator;
+import eu.codeacademy.eshop.validator.spring.UserValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,20 +13,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserValidator validator;
 
-    @GetMapping
+    @GetMapping("/register")
     public String getUserForm(Model model) {
         model.addAttribute("userDto", UserDto.builder().build());
 
         return "/user/user";
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public String register(@Valid UserDto userDto, BindingResult errors) {
         validator.validate(userDto, errors);
         if (errors.hasErrors()) {

@@ -1,4 +1,4 @@
-package eu.codeacademy.eshop.validator;
+package eu.codeacademy.eshop.validator.spring;
 
 import eu.codeacademy.eshop.user.dto.UserDto;
 import org.springframework.stereotype.Component;
