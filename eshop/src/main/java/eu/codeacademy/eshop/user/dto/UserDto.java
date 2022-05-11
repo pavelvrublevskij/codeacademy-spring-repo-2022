@@ -1,6 +1,6 @@
 package eu.codeacademy.eshop.user.dto;
 
-import eu.codeacademy.eshop.validator.PasswordCompare;
+import eu.codeacademy.eshop.validator.FieldsStringCompare;
 import eu.codeacademy.eshop.validator.PhoneNumber;
 import eu.codeacademy.eshop.validator.PhoneType;
 import lombok.Builder;
@@ -12,7 +12,11 @@ import javax.validation.constraints.Size;
 
 @Builder
 @Getter
-@PasswordCompare
+//@PasswordCompare
+@FieldsStringCompare(
+        firstField = "password",
+        secondField = "repeatedPassword",
+        message = "{validate.string.fields}")
 public class UserDto {
 
     private String name;
@@ -22,11 +26,9 @@ public class UserDto {
     @Email
     private String email;
 
-    @NotBlank
     @Size(min = 6, max = 255)
     private String password;
 
-    @NotBlank
     @Size(min = 6, max = 255)
     private String repeatedPassword;
 
