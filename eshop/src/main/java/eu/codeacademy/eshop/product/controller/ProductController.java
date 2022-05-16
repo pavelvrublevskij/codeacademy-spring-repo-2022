@@ -1,7 +1,7 @@
 package eu.codeacademy.eshop.product.controller;
 
 import eu.codeacademy.eshop.product.dto.ProductDto;
-import eu.codeacademy.eshop.product.helper.MessageService;
+import eu.codeacademy.eshop.helper.MessageService;
 import eu.codeacademy.eshop.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;

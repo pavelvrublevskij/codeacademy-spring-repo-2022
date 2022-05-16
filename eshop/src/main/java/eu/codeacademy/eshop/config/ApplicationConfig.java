@@ -1,4 +1,4 @@
-package eu.codeacademy.eshop.product.config;
+package eu.codeacademy.eshop.config;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;

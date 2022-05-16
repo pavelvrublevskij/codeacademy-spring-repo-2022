@@ -1,4 +1,4 @@
-package eu.codeacademy.eshop.product.helper;
+package eu.codeacademy.eshop.helper;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
