@@ -17,10 +17,10 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='name', path=@{*{urlRootPath}}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{products.name})"></a></th>
-            <th scope="col"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='countOfStock', path=@{*{urlRootPath}}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.quantity})"></a></th>
-            <th scope="col"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='price', path=@{*{urlRootPath}}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.price} + ' (' + ${currency} + ')')"></a></th>
-            <th scope="col"></th>
+            <th scope="col" style="width: auto"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='name', path=@{*{urlRootPath}}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{products.name})"></a></th>
+            <th scope="col" style="width: 15%"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='countOfStock', path=@{*{urlRootPath}}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.quantity})"></a></th>
+            <th scope="col" style="width: 15%"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='price', path=@{*{urlRootPath}}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.price} + ' (' + ${currency} + ')')"></a></th>
+            <th scope="col" style="width: 15%"></th>
         </tr>
         </thead>
         <tbody>
@@ -30,12 +30,14 @@
             <td th:text="${product.quantity}"></td>
             <td th:text="${product.price}"></td>
             <td>
-                <form method="POST" th:action="@{/cart/{productId}(productId=${product.productId})}">
-                    <button class="btn btn-primary">
-                        <i class="fa-solid fa-cart-arrow-down"></i>
-                    </button>
-                </form>
-                <a class="btn btn-danger"th:href="@{/products/{productId}/delete(productId=${product.productId})}" th:text="#{products.delete}"></a>
+                <div class="d-flex justify-content-between">
+                    <form method="POST" th:action="@{/cart/{productId}(productId=${product.productId})}">
+                        <button class="btn btn-primary">
+                            <i class="fa-solid fa-cart-arrow-down"></i>
+                        </button>
+                    </form>
+                    <a class="btn btn-danger"th:href="@{/products/{productId}/delete(productId=${product.productId})}" th:text="#{products.delete}"></a>
+                </div>
             </td>
         </tr>
         </tbody>
