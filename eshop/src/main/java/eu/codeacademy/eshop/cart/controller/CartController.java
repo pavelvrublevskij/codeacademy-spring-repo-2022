@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import java.util.UUID;
 
@@ -34,6 +35,15 @@ public class CartController {
     @PostMapping("/{productId}")
     public String addToCart(@PathVariable UUID productId, @ModelAttribute("cartSession") CartDto cart) {
         cartService.addToCartByProductId(productId, cart);
+
+        return "redirect:/products/list";
+    }
+
+    @PostMapping
+    public String order(SessionStatus sessionStatus) {
+        //TODO: save into DB or do another things with cart data
+
+        sessionStatus.setComplete();
 
         return "redirect:/products/list";
     }
