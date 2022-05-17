@@ -18,7 +18,7 @@
         <tr>
             <th scope="col"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='name', path=@{*{urlRootPath}}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{products.name})"></a></th>
             <th scope="col"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='countOfStock', path=@{*{urlRootPath}}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.quantity})"></a></th>
-            <th scope="col"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='price', path=@{*{urlRootPath}}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.price})"></a></th>
+            <th scope="col"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='price', path=@{*{urlRootPath}}, sortUp='fa-arrow-up-9-1', sortDown='fa-arrow-down-1-9', fieldName=#{products.price} + ' (' + ${currency} + ')')"></a></th>
             <th scope="col"></th>
         </tr>
         </thead>

@@ -11,11 +11,11 @@
 
     <table class="table table-striped">
         <thead>
-        <tr>
-            <th scope="col">Product Name</th>
-            <th scope="col">Unit Price</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Total Price</th>
+        <tr th:with="curr=' (' + ${currency} + ')'">
+            <th scope="col" th:text="#{cart.productName}">Product Name</th>
+            <th scope="col" th:text="#{cart.unitName} + *{curr}">Unit Price</th>
+            <th scope="col" th:text="#{cart.quantity}">Quantity</th>
+            <th scope="col" th:text="#{cart.totalPrice} + *{curr}">Total Price</th>
             <th scope="col"></th>
         </tr>
         </thead>
