@@ -74,3 +74,10 @@
 <div th:fragment="footer">
     <span class="text-muted">CodeAcademy. Spring MVC. All Rights reserved </span>
 </div>
+
+<div th:fragment="message">
+    <div class="alert alert-success"
+         role="alert"
+         th:text="${param.successMessage}">
+    </div>
+</div>

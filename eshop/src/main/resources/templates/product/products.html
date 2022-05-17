@@ -12,6 +12,7 @@
 <div th:with="urlRootPath=${#httpServletRequest.requestURI}">
     <div th:if="${productsPage.hasContent()}"
      class="container">
+    <div th:replace="fragments/messages :: message"></div>
     <span th:text="#{products.all(${productsPage.totalElements})}"></span>
     <table class="table table-striped">
         <thead>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.UUID;
 
@@ -40,10 +41,12 @@ public class CartController {
     }
 
     @PostMapping
-    public String order(SessionStatus sessionStatus) {
+    public String order(SessionStatus sessionStatus, RedirectAttributes redirectAttributes) {
         //TODO: save into DB or do another things with cart data
 
         sessionStatus.setComplete();
+
+        redirectAttributes.addAttribute("successMessage", "cart.order.message.success");
 
         return "redirect:/products/list";
     }
