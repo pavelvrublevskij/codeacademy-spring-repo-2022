@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -72,9 +73,23 @@ public class ProductController {
         return "redirect:/products/list";
     }
 
+    /**
+     * @deprecated since 2022-05-17, use {@link #deleteProductV2(UUID)} instead
+     * @param model
+     * @param id
+     * @return
+     */
+    @Deprecated
     @GetMapping("/{productId}/delete")
     public String deleteProduct(Model model, @PathVariable("productId") UUID id) {
         productService.deleteProduct(id);
+
+        return "redirect:/products/list";
+    }
+
+    @PostMapping("/delete")
+    public String deleteProductV2(@RequestParam UUID productId) {
+        productService.deleteProduct(productId);
 
         return "redirect:/products/list";
     }
