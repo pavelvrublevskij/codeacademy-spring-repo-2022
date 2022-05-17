@@ -4,6 +4,8 @@ import eu.codeacademy.eshop.product.dto.ProductDto;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.math.BigDecimal;
+
 @Builder
 @Getter
 public class CartItem {
@@ -13,5 +15,9 @@ public class CartItem {
 
     public void incrementQantity() {
         quantity++;
+    }
+
+    public BigDecimal getItemTotalPrice() {
+        return productDto.getPrice().multiply(BigDecimal.valueOf(quantity));
     }
 }
