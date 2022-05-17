@@ -73,22 +73,8 @@ public class ProductController {
         return "redirect:/products/list";
     }
 
-    /**
-     * @deprecated since 2022-05-17, use {@link #deleteProductV2(UUID)} instead
-     * @param model
-     * @param id
-     * @return
-     */
-    @Deprecated
-    @GetMapping("/{productId}/delete")
-    public String deleteProduct(Model model, @PathVariable("productId") UUID id) {
-        productService.deleteProduct(id);
-
-        return "redirect:/products/list";
-    }
-
     @PostMapping("/delete")
-    public String deleteProductV2(@RequestParam UUID productId) {
+    public String deleteProduct(@RequestParam UUID productId) {
         productService.deleteProduct(productId);
 
         return "redirect:/products/list";
