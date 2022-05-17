@@ -46,7 +46,7 @@ public class CartController {
 
         sessionStatus.setComplete();
 
-        redirectAttributes.addAttribute("successMessage", "cart.order.message.success");
+        redirectAttributes.addFlashAttribute("successMessage", "cart.order.message.success");
 
         return "redirect:/products/list";
     }
