@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.UUID;
@@ -35,14 +36,18 @@ public class ProductController {
     }
 
     @PostMapping
-    public String createProduct(Model model, @Valid ProductDto product, BindingResult errors) {
+    public String createProduct(Model model, @Valid ProductDto product,
+                                BindingResult errors,
+                                RedirectAttributes redirectAttributes) {
         if (errors.hasErrors()) {
             return "product/product";
         }
 
         productService.addProduct(product);
 
-        return "redirect:/products?message=create.product.message.success";
+        redirectAttributes.addAttribute("message", "create.product.message.success");
+
+        return "redirect:/products";
     }
 
     @GetMapping("/list")
