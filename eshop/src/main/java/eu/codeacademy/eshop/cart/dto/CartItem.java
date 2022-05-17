@@ -9,5 +9,9 @@ import lombok.Getter;
 public class CartItem {
 
     private final ProductDto productDto;
-    private final Integer quantity;
+    private Integer quantity;
+
+    public void incrementQantity() {
+        quantity++;
+    }
 }
