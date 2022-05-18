@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().requestMatchers(
                 PathRequest.toStaticResources().atCommonLocations(),
-                PathRequest.toH2Console()
+                PathRequest.toH2Console() //FIXME: when take profile lesson
         );
     }
 }
