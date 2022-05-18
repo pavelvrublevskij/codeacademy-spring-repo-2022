@@ -11,7 +11,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/css/**").permitAll()
+                .antMatchers("/css/**", "/h2/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -21,7 +21,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login-eshop")
                 .defaultSuccessUrl("/", true)
                 .usernameParameter("loginEmail")
-                .passwordParameter("loginPassword");
+                .passwordParameter("loginPassword")
+                .and()
+            .csrf()
+                .ignoringAntMatchers("/h2/**")
+                .and()
+            .headers()
+                .frameOptions()
+                .sameOrigin();
     }
 
 /*    @Override
