@@ -31,7 +31,7 @@ spring:
         default-page-size: 3
   security:
     user:
-      name: user
+      name: user@eshop.lt
       password: user
 logging:
   level:
