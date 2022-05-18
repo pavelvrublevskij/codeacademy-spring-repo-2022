@@ -39,3 +39,4 @@ logging:
       codeacademy:
         eshop:
           config: DEBUG
+          filter: TRACE
