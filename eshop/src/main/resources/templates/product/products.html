@@ -14,7 +14,7 @@
      class="container">
     <div th:replace="fragments/messages :: message"></div>
     <span th:text="#{products.all(${productsPage.totalElements})}"></span>
-    <table class="table table-striped">
+    <table class="table table-dark table-hover">
         <thead>
         <tr>
             <th scope="col" style="width: auto"><a th:replace="fragments/layout :: sortColumn(data=${productsPage}, name='name', path=@{*{urlRootPath}}, sortUp='fa-arrow-up-z-a', sortDown='fa-arrow-down-a-z', fieldName=#{products.name})"></a></th>

@@ -1,3 +1,10 @@
+body {
+    background-color: #434453;
+    color: white;
+    min-height: 100vh;
+    font-size: calc(6px + 2vmin);
+}
+
 .hasError {
     border-color: red;
     color: red;
@@ -5,10 +12,6 @@
 
 .error-block {
     background-color: #ce6c6c;
-}
-
-.background-color {
-    background-color: #2f2a2a;
 }
 
 .form-control {
