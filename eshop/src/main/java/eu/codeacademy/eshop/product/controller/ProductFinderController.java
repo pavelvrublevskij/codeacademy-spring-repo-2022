@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import static eu.codeacademy.eshop.EshopEndpoint.PUBLIC_WORKSPACE;
+
 @Controller
-@RequestMapping("/product-finder")
+@RequestMapping(PUBLIC_WORKSPACE + "/product-finder")
 @RequiredArgsConstructor
 public class ProductFinderController {
 
@@ -19,7 +21,7 @@ public class ProductFinderController {
 
     @GetMapping
     public String getProductsByName(Model model, @RequestParam String productName) {
-        return "forward:/product-finder/searchResult/" + productName;
+        return "forward:" + PUBLIC_WORKSPACE + "/product-finder/searchResult/" + productName;
     }
 
     @GetMapping("/searchResult/{productName}")

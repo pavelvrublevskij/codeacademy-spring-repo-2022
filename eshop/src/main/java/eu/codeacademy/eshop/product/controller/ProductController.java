@@ -19,14 +19,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.util.UUID;
 
+import static eu.codeacademy.eshop.EshopEndpoint.PRODUCT_DELETE_PATH;
+import static eu.codeacademy.eshop.EshopEndpoint.PRODUCT_LIST_PATH;
+import static eu.codeacademy.eshop.EshopEndpoint.PRODUCT_ROOT_PATH;
+import static eu.codeacademy.eshop.EshopEndpoint.PRODUCT_UPDATE_PATH;
+
 @Controller
 @RequiredArgsConstructor
 public class ProductController {
-
-    private static final String PRODUCT_ROOT_PATH = "/products";
-    private static final String PRODUCT_LIST_PATH = "/public" + PRODUCT_ROOT_PATH + "/list";
-    private static final String PRODUCT_UPDATE_PATH = PRODUCT_ROOT_PATH + "/{productId}/update";
-    private static final String PRODUCT_DELETE_PATH = PRODUCT_ROOT_PATH + "/delete";
 
     private final ProductService productService;
     private final MessageService messageService;
@@ -51,7 +51,7 @@ public class ProductController {
 
         redirectAttributes.addAttribute("message", "create.product.message.success");
 
-        return "redirect:/products";
+        return "redirect:" + PRODUCT_ROOT_PATH;
     }
 
     @GetMapping(PRODUCT_LIST_PATH)
@@ -73,13 +73,13 @@ public class ProductController {
     public String getUpdateProduct(Model model, ProductDto product) {
         productService.updateProduct(product);
 
-        return "redirect:/products/list";
+        return "redirect:" + PRODUCT_LIST_PATH;
     }
 
     @PostMapping(PRODUCT_DELETE_PATH)
     public String deleteProduct(@RequestParam UUID productId) {
         productService.deleteProduct(productId);
 
-        return "redirect:/products/list";
+        return "redirect:" + PRODUCT_LIST_PATH;
     }
 }
