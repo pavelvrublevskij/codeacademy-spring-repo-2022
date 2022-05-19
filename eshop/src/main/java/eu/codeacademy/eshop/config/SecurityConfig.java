@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-            /*.inMemoryAuthentication()
+            .inMemoryAuthentication()
                 .withUser("user@eshop.lt")
                     .password("{bcrypt}$2a$10$teqiNl4bRoRUxgrJH15ixulqUtfHsHyQMHmB62x1AGRtXyOcMJTv.") // pass is user
                     .roles("USER")
@@ -56,10 +56,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .and()
                 .withUser("no-bcrypt@eshop.lt")
                     .password("{noop}a") // password without encoding, as plain text
-                    .roles("USER", "ADMIN");
-             */
-                .jdbcAuthentication()
-                    .dataSource(dataSource)
+                    .roles("USER", "ADMIN")
+                    .and()
+                .and()
+            .jdbcAuthentication()
+                .dataSource(dataSource)
                     .usersByUsernameQuery("SELECT email AS username, password, TRUE AS enabled FROM users WHERE email = ?")
                     .authoritiesByUsernameQuery("SELECT email AS username, 'USER' AS authority FROM users WHERE email = ?")
                     .passwordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
