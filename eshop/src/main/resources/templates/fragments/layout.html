@@ -24,7 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/products/list}">Products</a>
+                    <a class="nav-link active" aria-current="page" th:href="@{/public/products/list}">Products</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" th:href="@{/products}">Product</a>
@@ -37,7 +37,7 @@
                 </li>
                 <li th:replace="this :: language(${rootPath})"></li>
             </ul>
-            <form class="d-flex" method="GET" th:action="@{/product-finder}">
+            <form class="d-flex" method="GET" th:action="@{/public/product-finder}">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="productName">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
