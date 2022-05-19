@@ -59,5 +59,6 @@ public class ApplicationConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login-eshop").setViewName("login/login");
+        registry.addRedirectViewController("/", "/cart"); //TODO: identify why redirect does not work
     }
 }
