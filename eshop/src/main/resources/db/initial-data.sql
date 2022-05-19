@@ -24,3 +24,6 @@ VALUES (1, 1),
        (3, 2);
 
 
+INSERT INTO users(name, surname, email, password, zip_code, phone_number)
+VALUES ('Vardenis', 'Pavardenis', 'vp@eshop.lt', '{bcrypt}$2a$10$C3lEG9nvR9B0aFngwf.Ilup4oBj/OcDb2RJYABIvGo1.2Omp7zGlS', 'LT-00001', ''); -- pass is vp
+
