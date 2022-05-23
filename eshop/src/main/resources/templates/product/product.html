@@ -8,7 +8,7 @@
 
 <div class="container">
     <h3 th:text="#{create.product}"></h3>
-    <form method="post" th:object="${productDto}">
+    <form method="post" th:object="${productDto}" th:action="@{/products}">
         <div class="mb-3">
             <ul class="error-block" th:if="${#fields.hasErrors()}">
                 <li th:each="error: ${#fields.errors()}" th:text="${error}"></li>
