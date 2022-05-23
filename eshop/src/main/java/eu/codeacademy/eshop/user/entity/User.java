@@ -4,16 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
 
 @AllArgsConstructor
@@ -34,9 +35,12 @@ public class User implements UserDetails {
     private String zipCode;
     private String phoneNumber;
 
+    @ManyToMany(fetch = FetchType.EAGER) //!! To bad use EAGER
+    private Set<Authority> authorities;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("USER"));
+        return this.authorities;
     }
 
     // this is redundant if lombok @Getter used

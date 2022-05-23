@@ -25,5 +25,19 @@ VALUES (1, 1),
 
 
 INSERT INTO users(name, surname, email, password, zip_code, phone_number)
-VALUES ('Vardenis', 'Pavardenis', 'vp@eshop.lt', '{bcrypt}$2a$10$C3lEG9nvR9B0aFngwf.Ilup4oBj/OcDb2RJYABIvGo1.2Omp7zGlS', 'LT-00001', ''); -- pass is vp
+VALUES
+    ('Admin', 'Pavardenis', 'admin@eshop.lt', '{bcrypt}$2a$10$kf8cJpZFe1z3hrI9O/Cjnuh.SKShYOMEGlYigeKxRvwqBAQ4jKJze', 'LT-00001', ''), -- pass is admin
+    ('User', 'Pavardenis', 'user@eshop.lt', '{bcrypt}$2a$10$auHiOfM5qK7.M2ghqP5X/.U2XOa2OjADI7X/6cM9MEI3HglrZuWLW', 'LT-00001', ''); -- pass is user
+
+INSERT INTO authority(name)
+VALUES
+    ('ADMIN'),
+    ('USER');
+
+INSERT INTO users_authorities(user_id, authorities_id)
+VALUES
+    (1, 1),
+    (1, 2),
+    (2, 2);
+
 
