@@ -7,7 +7,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,7 +34,7 @@ public class User implements UserDetails {
     private String zipCode;
     private String phoneNumber;
 
-    @ManyToMany(fetch = FetchType.EAGER) //!! To bad use EAGER
+    @ManyToMany
     private Set<Authority> authorities;
 
     @Override
