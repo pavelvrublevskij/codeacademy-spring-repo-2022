@@ -7,6 +7,21 @@ WEB for Spring MVC learning
 ### Access the application
 http://localhost:8080
 
+## Run application
+Application has several profiles:
+
+`amazon` - full functional.
+
+`ebay` - delete product not possible and product list are always empty.
+### DB profiles
+By default, h2 DBMS will be activated. To activate other DBMS, additional profile should be added:
+
+`pg` - PostgreSQL will be used. PostgreSQL DBMS required. You could use below docker command (docker required).
+See __application-pg.yml__ for configuration.
+
+`mysql` - MySQL will be used. MySQL DBMS required. You could use below docker command (docker required).
+See __application-mysql.yml__ for configuration.
+
 ## Run DB with Docker
 ### Run mysql
 ```
