@@ -51,4 +51,8 @@ public class UserRoleDto implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public String getFullName() {
+        return user.getName() + " " + user.getSurname();
+    }
 }
