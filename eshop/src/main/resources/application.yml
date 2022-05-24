@@ -4,7 +4,7 @@ server:
       tracking-modes: cookie
 spring:
   profiles:
-    active: amazon
+    include: amazon
   main:
     banner-mode: console
   datasource:
