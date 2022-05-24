@@ -3,6 +3,8 @@ server:
     session:
       tracking-modes: cookie
 spring:
+  profiles:
+    active: dev
   main:
     banner-mode: console
   datasource:
