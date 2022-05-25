@@ -10,6 +10,9 @@
 
 <h3 th:text="'Today is: ' + ${modelDate}"></h3>
 
+<h3 th:text="'Company Name: ' + ${companyData.companyName}"></h3>
+<h3 th:text="'Company IBAN: ' + ${companyData.companyIban}"></h3>
+
 <div th:replace="fragments/layout :: footer"></div>
 
 </body>

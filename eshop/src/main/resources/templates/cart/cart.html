@@ -37,7 +37,7 @@
         </tfoot>
     </table>
 
-    <form method="POST">
+    <form method="POST" th:action="@{/cart/order}">
         <button class="btn btn-primary" type="submit" th:text="#{cart.order}"></button>
     </form>
 </div>
