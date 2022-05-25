@@ -18,7 +18,7 @@ public class CompanyConfig {
     @Value("${eshop.company.iban:}")  // after ":" is default value
     private String companyIban;
 
-    @Value("${eshop.company.cities}")
+    @Value("#{'${eshop.company.cities}'.replace(' ', '').split(',')}")
     private List<String> companyCities;
 
     public List<String> getCompanyCities() {
