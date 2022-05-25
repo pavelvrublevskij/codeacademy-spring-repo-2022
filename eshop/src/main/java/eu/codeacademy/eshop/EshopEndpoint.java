@@ -9,8 +9,6 @@ public interface EshopEndpoint {
     String PRODUCT_UPDATE_PATH = PRODUCT_ROOT_PATH + "/{productId}/update";
     String PRODUCT_DELETE_PATH = PRODUCT_ROOT_PATH + "/delete";
 
-    String CART_ROOT_PATH = PUBLIC_WORKSPACE + "/cart";
-
     String USERS_ROOT_PATH = PUBLIC_WORKSPACE + "/users";
     String USERS_REGISTER_PATH = USERS_ROOT_PATH + "/register";
 

@@ -8,21 +8,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.UUID;
 
-import static eu.codeacademy.eshop.EshopEndpoint.CART_ROOT_PATH;
 import static eu.codeacademy.eshop.EshopEndpoint.PRODUCT_LIST_PATH;
+import static eu.codeacademy.eshop.EshopEndpoint.PUBLIC_WORKSPACE;
 
 @Controller
-@RequestMapping(CART_ROOT_PATH)
 @SessionAttributes("cartSession")
 @RequiredArgsConstructor
 public class CartController {
+
+    private static final String CART_ROOT_PATH = "/cart";
+    public static final String PUBLIC_CART_ROOT_PATH = PUBLIC_WORKSPACE + CART_ROOT_PATH;
 
     private final CartService cartService;
 
@@ -31,19 +32,19 @@ public class CartController {
         return new CartDto();
     }
 
-    @GetMapping
+    @GetMapping(PUBLIC_CART_ROOT_PATH)
     public String openCart(@ModelAttribute("cartSession") CartDto cart) {
         return "/cart/cart";
     }
 
-    @PostMapping("/{productId}")
+    @PostMapping(PUBLIC_CART_ROOT_PATH + "/{productId}")
     public String addToCart(@PathVariable UUID productId, @ModelAttribute("cartSession") CartDto cart) {
         cartService.addToCartByProductId(productId, cart);
 
         return "redirect:" + PRODUCT_LIST_PATH;
     }
 
-    @PostMapping
+    @PostMapping(CART_ROOT_PATH + "/order")
     public String order(SessionStatus sessionStatus, RedirectAttributes redirectAttributes) {
         //TODO: save into DB or do another things with cart data
 

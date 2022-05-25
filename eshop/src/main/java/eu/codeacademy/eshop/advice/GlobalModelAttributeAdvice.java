@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.Date;
 
-import static eu.codeacademy.eshop.EshopEndpoint.CART_ROOT_PATH;
 import static eu.codeacademy.eshop.EshopEndpoint.PRODUCT_UPDATE_PATH;
+import static eu.codeacademy.eshop.cart.controller.CartController.PUBLIC_CART_ROOT_PATH;
 
 @ControllerAdvice
 public class GlobalModelAttributeAdvice {
@@ -23,7 +23,7 @@ public class GlobalModelAttributeAdvice {
 
     @ModelAttribute("cartPath")
     public String cartPath() {
-        return CART_ROOT_PATH;
+        return PUBLIC_CART_ROOT_PATH;
     }
 
     @ModelAttribute("productUpdatePath")
