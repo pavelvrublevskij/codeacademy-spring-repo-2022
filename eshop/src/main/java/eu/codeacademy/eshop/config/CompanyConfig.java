@@ -13,6 +13,6 @@ public class CompanyConfig {
     @Value("${eshop.company.name}")
     private String companyName;
 
-    @Value("${eshop.company.iban}")
+    @Value("${eshop.company.iban:}")  // after ":" is default value
     private String companyIban;
 }
