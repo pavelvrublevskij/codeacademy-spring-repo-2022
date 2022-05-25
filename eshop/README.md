@@ -46,9 +46,4 @@ gradlew bootJar
 java -jar ./build/libs/eshop-0.0.1-SNAPSHOT.jar
 ```
 
-Run api on production mode:
-````
-java -jar -Dspring.profiles.active=pg promptpay-api.jar
-````
-
 See [help](HELP.md) for getting started
