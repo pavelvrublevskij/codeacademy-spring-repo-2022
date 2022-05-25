@@ -38,8 +38,3 @@ logging:
         eshop:
           config: DEBUG
           filter: TRACE
-
-eshop:
-  company:
-    name: CodeAcademy
-    iban: LT1234567...000
