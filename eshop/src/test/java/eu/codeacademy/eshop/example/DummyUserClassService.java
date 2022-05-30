@@ -3,10 +3,16 @@ package eu.codeacademy.eshop.example;
 public class DummyUserClassService {
 
     public void save(User user) {
-        // some logic here with db other systems, etc
-        // ...
-        // if something wrong then exception
-        throw new RuntimeException();
+        // do validations
+        if (user.getName() == null) {
+            throw new RuntimeException();
+        }
+
+        if (user.getAge() < 21) {
+            throw new RuntimeException("Age is to low!");
+        }
+
+        // otherwise save into db
     }
 
 
