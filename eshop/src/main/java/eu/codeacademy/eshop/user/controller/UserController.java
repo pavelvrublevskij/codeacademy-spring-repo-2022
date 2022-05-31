@@ -1,7 +1,7 @@
 package eu.codeacademy.eshop.user.controller;
 
 import eu.codeacademy.eshop.user.dto.UserDto;
-import eu.codeacademy.eshop.user.service.UserService;
+import eu.codeacademy.eshop.user.service.UserRegistrationService;
 import eu.codeacademy.eshop.validator.spring.UserValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ import static eu.codeacademy.eshop.EshopEndpoint.USERS_ROOT_PATH;
 public class UserController {
 
     private final UserValidator validator;
-    private final UserService userService;
+    private final UserRegistrationService userRegistrationService;
 
     @GetMapping(USERS_REGISTER_PATH)
     public String getUserForm(Model model) {
@@ -36,7 +36,7 @@ public class UserController {
             return "/user/user";
         }
 
-        userService.register(userDto);
+        userRegistrationService.register(userDto);
 
         return "redirect:" + USERS_ROOT_PATH;
     }

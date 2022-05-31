@@ -8,7 +8,7 @@
 
 <div class="container">
     <h3 th:text="#{create.user}"></h3>
-    <form method="POST" th:object="${userDto}">
+    <form method="POST" th:object="${userDto}" th:action="@{/public/users/register}">
         <div class="mb-3">
             <label class="form-label" th:text="#{create.user.name}"></label>
             <input class="form-control" placeholder="Name" th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'"
