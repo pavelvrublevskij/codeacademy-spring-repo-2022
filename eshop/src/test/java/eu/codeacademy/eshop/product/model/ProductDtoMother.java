@@ -11,4 +11,9 @@ public class ProductDtoMother {
                 .name(NAME)
                 .build();
     }
+
+    public static ProductDto.ProductDtoBuilder getPartialBuilder() {
+        return ProductDto.builder()
+                .name(NAME);
+    }
 }

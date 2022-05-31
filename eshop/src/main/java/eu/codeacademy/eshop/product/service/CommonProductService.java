@@ -27,10 +27,13 @@ public abstract class CommonProductService implements ProductService{
 
     @Transactional
     public void addProduct(ProductDto productDto) {
+        if (productDto == null) {
+            return;
+        }
+
         ProductCategory productCategory = ProductCategory.builder()
                 .name("NaN")
                 .build();
-
 
 //        productDto.setName("a");
 

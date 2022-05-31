@@ -6,14 +6,24 @@ import eu.codeacademy.eshop.product.mapper.ProductMapper;
 import eu.codeacademy.eshop.product.model.ProductDtoMother;
 import eu.codeacademy.eshop.product.repository.ProductCategoryRepository;
 import eu.codeacademy.eshop.product.repository.ProductRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+import java.util.UUID;
+
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ProductAmazonServiceTest {
@@ -41,5 +51,31 @@ class ProductAmazonServiceTest {
                 Product.builder()
                         .name("ProductName")
                         .build());
+    }
+
+    @Test
+    void addProductWhenProductIsNull() {
+        productAmazonService.addProduct(null);
+
+        verify(productRepository, times(0)).save(null);
+    }
+
+    @Test
+    void getProductPaginated() {
+        // given
+        final UUID uuid = UUID.randomUUID();
+        final String productName = "ProductName";
+        Product product = Product.builder().productId(uuid).name(productName).build();
+        ProductDto productDto = ProductDtoMother.getPartialBuilder().productId(uuid).build();
+
+        when(productRepository.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(List.of(product)));
+        when(mapper.mapTo(product)).thenReturn(productDto);
+
+        // when
+        Page<ProductDto> result = productAmazonService.getProductPaginated(PageRequest.of(1, 1));
+
+        // then
+        Assertions.assertEquals(uuid, result.getContent().get(0).getProductId());
+        Assertions.assertEquals(productName, result.getContent().get(0).getName());
     }
 }
