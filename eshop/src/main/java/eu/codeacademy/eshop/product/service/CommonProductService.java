@@ -31,6 +31,9 @@ public abstract class CommonProductService implements ProductService{
                 .name("NaN")
                 .build();
 
+
+//        productDto.setName("a");
+
         productRepository.save(Product.builder()
                 .name(productDto.getName())
                 .countOfStock(productDto.getQuantity())

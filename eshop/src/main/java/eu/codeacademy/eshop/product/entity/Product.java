@@ -41,4 +41,11 @@ public class Product {
     @ManyToMany(cascade = CascadeType.PERSIST)
     private Set<ProductCategory> productCategories;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+        Product product = (Product) o;
+        return name.equals(product.name);
+    }
 }
