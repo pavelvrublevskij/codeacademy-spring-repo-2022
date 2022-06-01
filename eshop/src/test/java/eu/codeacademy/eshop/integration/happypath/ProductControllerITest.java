@@ -1,4 +1,4 @@
-package eu.codeacademy.eshop.integration;
+package eu.codeacademy.eshop.integration.happypath;
 
 import eu.codeacademy.eshop.product.entity.Product;
 import eu.codeacademy.eshop.product.repository.ProductRepository;
