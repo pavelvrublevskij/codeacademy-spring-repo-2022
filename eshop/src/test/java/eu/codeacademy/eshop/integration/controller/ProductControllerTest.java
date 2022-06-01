@@ -1,4 +1,4 @@
-package eu.codeacademy.eshop.integration;
+package eu.codeacademy.eshop.integration.controller;
 
 import eu.codeacademy.eshop.helper.MessageService;
 import eu.codeacademy.eshop.product.controller.ProductController;
