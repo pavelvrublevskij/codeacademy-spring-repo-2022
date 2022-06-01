@@ -12,5 +12,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Optional<Product> findByProductId(UUID id);
 
+    // only for test scope
+    Optional<Product> findByName(String name);
+
     Page<Product> findProductsByNameIsLikeIgnoreCase(String productName, Pageable pageable);
 }
