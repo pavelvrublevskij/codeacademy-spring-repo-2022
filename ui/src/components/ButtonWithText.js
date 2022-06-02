@@ -1,6 +1,6 @@
-export default () => (
+export default (props) => (
     <>
-        <span>Nebuvo paspaustas</span>
+        <span>{props.text}</span>
         <button>Paspausk</button>
     </>
 )

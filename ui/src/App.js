@@ -19,7 +19,7 @@ function App() {
           Learn React
         </a>
         <MyAwesomeComponent name="World"/>
-        <ButtonWithText/>
+        <ButtonWithText text="Nebuvo paspaustas"/>
       </header>
     </div>
   );
