@@ -17,7 +17,7 @@ function App() {
         >
           Learn React
         </a>
-        <MyAwesomeComponent name="Tadas" />
+        <MyAwesomeComponent name="World"/>
       </header>
     </div>
   );
