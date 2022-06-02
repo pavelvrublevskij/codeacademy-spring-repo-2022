@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import MyAwesomeComponent from "./components/MyAwesomeComponent";
+import ButtonWithText from "./components/ButtonWithText";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           Learn React
         </a>
         <MyAwesomeComponent name="World"/>
+        <ButtonWithText/>
       </header>
     </div>
   );
