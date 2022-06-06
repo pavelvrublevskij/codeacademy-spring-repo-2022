@@ -2,3 +2,7 @@ rootProject.name = 'eshop'
 
 include 'eshop-main'
 include 'eshop-mvc'
+include 'eshop-jpa'
+include 'eshop-api'
+include 'eshop-common'
+

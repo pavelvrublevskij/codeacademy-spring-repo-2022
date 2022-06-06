@@ -1,7 +1,8 @@
 package eu.codeacademy.eshop.product.controller;
 
-import eu.codeacademy.eshop.product.dto.ProductDto;
-import eu.codeacademy.eshop.product.service.ProductService;
+import eu.codeacademy.eshop.common.product.dto.ProductDto;
+import eu.codeacademy.eshop.common.product.service.ProductService;
+import eu.codeacademy.eshop.controller.ProductController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

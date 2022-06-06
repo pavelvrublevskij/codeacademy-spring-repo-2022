@@ -5,7 +5,7 @@ plugins {
     id 'jacoco'
 }
 
-group = 'eu.codeacademy'
+group = 'eu.codeacademy.eshop'
 version = '0.0.1-SNAPSHOT'
 
 allprojects {
@@ -29,6 +29,14 @@ allprojects {
     dependencies {
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
+    }
+
+    tasks.jar {
+        enabled = true
+    }
+
+    test {
+        useJUnitPlatform()
     }
 }
 

@@ -1,7 +1,7 @@
 package eu.codeacademy.eshop.integration.happypath;
 
-import eu.codeacademy.eshop.product.entity.Product;
-import eu.codeacademy.eshop.product.repository.ProductRepository;
+import eu.codeacademy.eshop.jpa.product.entity.Product;
+import eu.codeacademy.eshop.jpa.product.repository.ProductRepository;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;

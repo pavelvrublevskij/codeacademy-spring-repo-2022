@@ -1,12 +1,11 @@
 package eu.codeacademy.eshop.advice;
 
+import eu.codeacademy.eshop.EshopEndpoint;
+import eu.codeacademy.eshop.controller.CartController;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.Date;
-
-import static eu.codeacademy.eshop.EshopEndpoint.PRODUCT_UPDATE_PATH;
-import static eu.codeacademy.eshop.cart.controller.CartController.PUBLIC_CART_ROOT_PATH;
 
 @ControllerAdvice
 public class GlobalModelAttributeAdvice {
@@ -23,11 +22,11 @@ public class GlobalModelAttributeAdvice {
 
     @ModelAttribute("cartPath")
     public String cartPath() {
-        return PUBLIC_CART_ROOT_PATH;
+        return CartController.PUBLIC_CART_ROOT_PATH;
     }
 
     @ModelAttribute("productUpdatePath")
     public String productUpdatePath() {
-        return PRODUCT_UPDATE_PATH;
+        return EshopEndpoint.PRODUCT_UPDATE_PATH;
     }
 }

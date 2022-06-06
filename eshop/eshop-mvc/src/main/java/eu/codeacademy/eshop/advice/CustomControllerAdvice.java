@@ -1,6 +1,6 @@
 package eu.codeacademy.eshop.advice;
 
-import eu.codeacademy.eshop.product.exception.ProductNotFoundException;
+import eu.codeacademy.eshop.common.product.exception.ProductNotFoundException;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;

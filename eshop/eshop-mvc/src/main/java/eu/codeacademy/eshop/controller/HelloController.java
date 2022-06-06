@@ -1,6 +1,6 @@
 package eu.codeacademy.eshop.controller;
 
-import eu.codeacademy.eshop.config.CompanyConfig;
+import eu.codeacademy.eshop.common.config.CompanyConfig;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
