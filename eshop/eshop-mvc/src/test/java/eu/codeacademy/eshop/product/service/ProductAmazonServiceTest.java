@@ -3,7 +3,7 @@ package eu.codeacademy.eshop.product.service;
 import eu.codeacademy.eshop.product.dto.ProductDto;
 import eu.codeacademy.eshop.product.entity.Product;
 import eu.codeacademy.eshop.product.mapper.ProductMapper;
-import eu.codeacademy.eshop.product.model.ProductDtoMother;
+import eu.codeacademy.eshop.product.model.model.ProductDtoMother;
 import eu.codeacademy.eshop.product.repository.ProductCategoryRepository;
 import eu.codeacademy.eshop.product.repository.ProductRepository;
 import org.junit.jupiter.api.Assertions;

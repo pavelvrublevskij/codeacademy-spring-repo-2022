@@ -1,4 +1,4 @@
-package eu.codeacademy.eshop.welcome.controller;
+package eu.codeacademy.eshop.controller;
 
 import eu.codeacademy.eshop.config.CompanyConfig;
 import lombok.RequiredArgsConstructor;

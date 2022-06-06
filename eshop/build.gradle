@@ -7,16 +7,29 @@ plugins {
 
 group = 'eu.codeacademy'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
+allprojects {
+    apply plugin: "java-library"
+    apply plugin: "org.springframework.boot"
+    apply plugin: "io.spring.dependency-management"
+    apply plugin: "jacoco"
+
+    repositories {
+        mavenCentral()
     }
-}
 
-repositories {
-    mavenCentral()
+    sourceCompatibility = '11'
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    dependencies {
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+    }
 }
 
 ext {
@@ -28,34 +41,4 @@ ext {
     httpComponentsHttpClientVersion = '4.5.13'
 }
 
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation "org.springframework.boot:spring-boot-devtools:${devToolsVersion}"
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation "org.thymeleaf.extras:thymeleaf-extras-springsecurity5:${thymeleafExtrasVersion}"
-    implementation "org.apache.httpcomponents:httpclient:${httpComponentsHttpClientVersion}"
-    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
 
-    implementation "com.h2database:h2:${h2Version}"
-    implementation "org.postgresql:postgresql:${postgresVersion}"
-    implementation "mysql:mysql-connector-java:${mysqlVersion}"
-
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.security:spring-security-test'
-}
-
-tasks.named('test') {
-    useJUnitPlatform()
-}
-
-test {
-    finalizedBy jacocoTestReport // report is always generated after tests run
-}
-jacocoTestReport {
-    dependsOn test // tests are required to run before generating the report
-}

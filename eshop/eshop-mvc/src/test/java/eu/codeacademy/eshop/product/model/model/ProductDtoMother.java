@@ -1,4 +1,4 @@
-package eu.codeacademy.eshop.product.model;
+package eu.codeacademy.eshop.product.model.model;
 
 import eu.codeacademy.eshop.product.dto.ProductDto;
 

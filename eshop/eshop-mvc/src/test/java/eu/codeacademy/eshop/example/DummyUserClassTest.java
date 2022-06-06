@@ -3,15 +3,11 @@ package eu.codeacademy.eshop.example;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class DummyUserClassTest {
@@ -25,7 +21,7 @@ public class DummyUserClassTest {
     @Test
     public void testSaveUserThrowsException() {
         User user = new User("Antanas", 1);
-        doThrow(RuntimeException.class).when(dummyUserClassService).save(user);
+        Mockito.doThrow(RuntimeException.class).when(dummyUserClassService).save(user);
 
         Assertions.assertThrows(RuntimeException.class, () -> dummyUserClass.saveUser());
     }
@@ -34,7 +30,7 @@ public class DummyUserClassTest {
     public void testFindUserAgeByNameWhenUserNameNotExists() {
         // given
         final String userName = "";
-        when(dummyUserClassService.getUseAgeByName(userName)).thenReturn(0);
+        Mockito.when(dummyUserClassService.getUseAgeByName(userName)).thenReturn(0);
 
         // when
         int age = dummyUserClass.findUserAgeByName(userName);
@@ -46,14 +42,14 @@ public class DummyUserClassTest {
     @Test
     public void testFindUserAgeByNameWhenUserNameExists() {
         // given
-        when(dummyUserClassService.getUseAgeByName("userName")).thenReturn(87);
+        Mockito.when(dummyUserClassService.getUseAgeByName("userName")).thenReturn(87);
 
         // when
         int age = dummyUserClass.findUserAgeByName("userName");
 
         // then
         Assertions.assertEquals(87, age);
-        verify(dummyUserClassService, times(1)).getUseAgeByName(anyString());
+        Mockito.verify(dummyUserClassService, Mockito.times(1)).getUseAgeByName(ArgumentMatchers.anyString());
 //        verify(dummyUserClassService, times(2)).getUseAgeByName(anyString());
     }
 }

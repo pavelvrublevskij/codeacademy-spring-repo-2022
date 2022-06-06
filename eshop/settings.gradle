@@ -1,1 +1,4 @@
 rootProject.name = 'eshop'
+
+include 'eshop-main'
+include 'eshop-mvc'
