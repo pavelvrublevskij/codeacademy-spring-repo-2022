@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/public/**", "/", "/api/**",
                         "/swagger-ui/**",
                         "/swagger-resources/**",
+//                        "/v2/api-docs/**",  // if we want to use old swagger version
                         "/v3/api-docs/**"
                 ).permitAll()
                 .anyRequest()
