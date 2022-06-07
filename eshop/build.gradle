@@ -55,6 +55,7 @@ ext {
     mysqlVersion = '8.0.29'
     thymeleafExtrasVersion = '3.0.4.RELEASE'
     httpComponentsHttpClientVersion = '4.5.13'
+    srpingfoxVersion = '3.0.0'
 }
 
 

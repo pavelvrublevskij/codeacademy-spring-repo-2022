@@ -3,6 +3,10 @@ server:
     session:
       tracking-modes: cookie
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
   profiles:
     include: amazon
   main:

@@ -2,6 +2,7 @@ dependencies {
     implementation project(':eshop-common')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "io.springfox:springfox-boot-starter:${srpingfoxVersion}"
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

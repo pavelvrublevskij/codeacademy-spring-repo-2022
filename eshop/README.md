@@ -13,6 +13,10 @@ Application has several profiles:
 `amazon` - full functional.
 
 `ebay` - delete product not possible and product list are always empty.
+
+### Access Swagger API
+* http://localhost:8080/swagger-ui/index.html
+
 ### DB profiles
 By default, h2 DBMS will be activated. To activate other DBMS, additional profile should be added:
 
