@@ -23,7 +23,6 @@ public class ProductApiController {
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ApiOperation(
             value = "Get all product",
-            tags = "getProducts",
             notes = "Get all product from db, and any other information could be here")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Kai sekmingai grazina produktus"),
