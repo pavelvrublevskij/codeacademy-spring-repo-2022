@@ -68,6 +68,6 @@ public class FileService {
 
 
     public MediaType getFileMediaTypeByFileName(String fileName) {
-        return MediaType.valueOf(URLConnection.guessContentTypeFromName(fileName)) ;
+        return MediaType.valueOf(URLConnection.guessContentTypeFromName(fileName));
     }
 }
