@@ -3,7 +3,6 @@ package eu.codeacademy.eshop.api.controller;
 import eu.codeacademy.eshop.api.service.FileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +24,7 @@ public class FileController {
     @GetMapping("/api/file/download")
     public ResponseEntity<Resource> getFileByFileName(@RequestParam String fileName) {
         return ResponseEntity.ok()
-                .contentType(MediaType.IMAGE_JPEG)
+                .contentType(fileService.getFileMediaTypeByFileName(fileName))
                 .body(fileService.getFile(fileName));
     }
 }
