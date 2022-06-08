@@ -18,7 +18,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/products")
+@RequestMapping("/products")
 @Api(tags = "Product Controller")
 public class ProductApiController {
 

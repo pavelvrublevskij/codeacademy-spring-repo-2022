@@ -5,7 +5,7 @@ WEB for Spring MVC learning
 * Language Adopt Open JDK 11 Hotspot
 
 ### Access the application
-http://localhost:8080
+http://localhost:8080/api
 
 ## Run application
 Application has several profiles:
@@ -15,7 +15,7 @@ Application has several profiles:
 `ebay` - delete product not possible and product list are always empty.
 
 ### Access Swagger API
-* http://localhost:8080/swagger-ui/index.html
+* http://localhost:8080/api/swagger-ui/index.html
 
 ### DB profiles
 By default, h2 DBMS will be activated. To activate other DBMS, additional profile should be added:
