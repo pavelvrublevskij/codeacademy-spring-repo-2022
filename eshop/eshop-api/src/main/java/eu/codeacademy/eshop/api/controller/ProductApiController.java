@@ -1,8 +1,8 @@
 package eu.codeacademy.eshop.api.controller;
 
 import eu.codeacademy.eshop.api.dto.ProductsResponse;
-import eu.codeacademy.eshop.common.product.dto.ProductDto;
-import eu.codeacademy.eshop.common.product.service.ProductService;
+import eu.codeacademy.eshop.api.dto.ProductDto;
+import eu.codeacademy.eshop.api.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

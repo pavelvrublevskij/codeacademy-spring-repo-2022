@@ -1,6 +1,5 @@
 package eu.codeacademy.eshop.api.dto;
 
-import eu.codeacademy.eshop.common.product.dto.ProductDto;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Getter;

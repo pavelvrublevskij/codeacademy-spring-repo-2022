@@ -3,5 +3,6 @@ rootProject.name = 'eshop'
 include 'eshop-main'
 include 'eshop-jpa'
 include 'eshop-api'
-include 'eshop-common'
+include 'security'
+include 'security:security-basic'
 

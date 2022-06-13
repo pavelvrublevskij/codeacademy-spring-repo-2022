@@ -1,7 +1,7 @@
 package eu.codeacademy.eshop.api.controller;
 
 import eu.codeacademy.eshop.api.dto.ProductsResponse;
-import eu.codeacademy.eshop.common.product.dto.ProductDto;
+import eu.codeacademy.eshop.api.dto.ProductDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
