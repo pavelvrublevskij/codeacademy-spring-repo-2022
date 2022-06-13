@@ -56,4 +56,16 @@ CREATE TABLE users_authorities
     authorities_id  BIGINT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (authorities_id) REFERENCES authority(id)
-)
+);
+
+DROP TABLE IF EXISTS file;
+CREATE TABLE file
+(
+    id                BIGSERIAL PRIMARY KEY,
+    file_id           UUID           NOT NULL,
+    file_name         VARCHAR(100)   NOT NULL,
+    file_extension    VARCHAR(15)    NOT NULL,
+    media_type        VARCHAR(10)    NOT NULL,
+    size              BIGINT         NOT NULL,
+    timestamp         TIMESTAMP      DEFAULT current_timestamp
+);
