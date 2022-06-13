@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +19,12 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/products")
+@RequestMapping(ProductApiController.PRODUCTS_ROOT_PATH)
 @Api(tags = "Product Controller")
 public class ProductApiController {
+
+    public static final String PRODUCTS_ROOT_PATH = "/products";
+    private static final String UUID_PATH = "/{uuid}";
 
     private final ProductService productService;
 
@@ -40,7 +44,7 @@ public class ProductApiController {
     }
 
     @GetMapping(
-            path = "/{uuid}",
+            path = UUID_PATH,
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ApiOperation(value = "Get one product by id")
     @ApiResponses(value = {
@@ -52,5 +56,10 @@ public class ProductApiController {
         return ProductsResponse.builder()
                 .products(List.of(productService.getProductByUUID(uuid)))
                 .build();
+    }
+
+    @DeleteMapping(path = UUID_PATH)
+    public void deleteProduct(@PathVariable("uuid") UUID productId) {
+        productService.deleteProduct(productId);
     }
 }
