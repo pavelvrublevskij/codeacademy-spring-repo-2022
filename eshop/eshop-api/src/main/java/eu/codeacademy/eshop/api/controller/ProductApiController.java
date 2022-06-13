@@ -1,6 +1,7 @@
 package eu.codeacademy.eshop.api.controller;
 
 import eu.codeacademy.eshop.api.dto.ProductsResponse;
+import eu.codeacademy.eshop.common.product.dto.ProductDto;
 import eu.codeacademy.eshop.common.product.service.ProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -11,9 +12,12 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
@@ -61,5 +65,10 @@ public class ProductApiController {
     @DeleteMapping(path = UUID_PATH)
     public void deleteProduct(@PathVariable("uuid") UUID productId) {
         productService.deleteProduct(productId);
+    }
+
+    @PostMapping
+    public void createProduct(@Valid @RequestBody ProductDto productDto) {
+        productService.addProduct(productDto);
     }
 }
