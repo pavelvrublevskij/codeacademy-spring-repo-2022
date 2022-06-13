@@ -65,7 +65,7 @@ public abstract class CommonProductService implements ProductService {
     }
 
     @Transactional
-    public void updateProduct(ProductDto productDto) {
+    public boolean updateProduct(ProductDto productDto) {
         Optional<Product> productOptional = productRepository.findByProductId(productDto.getProductId());
 
         if (productOptional.isPresent()) {
@@ -77,7 +77,11 @@ public abstract class CommonProductService implements ProductService {
                     .build();
 
             productRepository.save(product);
+
+            return true;
         }
+
+        return false;
     }
 
     @Transactional
