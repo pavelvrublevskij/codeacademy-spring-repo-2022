@@ -8,7 +8,9 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -68,7 +70,9 @@ public class ProductApiController {
     }
 
     @PostMapping
-    public void createProduct(@Valid @RequestBody ProductDto productDto) {
+    public ResponseEntity<Void> createProduct(@Valid @RequestBody ProductDto productDto) {
         productService.addProduct(productDto);
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }
