@@ -1,5 +1,6 @@
 package eu.codeacademy.eshop.api.service;
 
+import eu.codeacademy.eshop.api.dto.FileResponse;
 import eu.codeacademy.eshop.jpa.file.File;
 import eu.codeacademy.eshop.jpa.product.repository.FileRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +30,7 @@ public class FileService {
     private final Path fileLocation = Paths.get("./files").toAbsolutePath().normalize();
 
     @Transactional
-    public void saveFile(MultipartFile file) {
+    public FileResponse saveFile(MultipartFile file) {
         createDirectory();
 
         try {
@@ -45,10 +46,16 @@ public class FileService {
 
             Path filePathWithFileName = fileLocation.resolve(savedFileInDb.getUniqFileName());
             Files.copy(file.getInputStream(), filePathWithFileName, StandardCopyOption.REPLACE_EXISTING);
+
+            return FileResponse.builder()
+                    .originalFileName(savedFileInDb.getUniqFileName())
+                    .build();
         } catch (IOException e) {
             log.error("Cannot create file", e);
             e.printStackTrace();
         }
+
+        return null;
     }
 
     private void createDirectory() {
