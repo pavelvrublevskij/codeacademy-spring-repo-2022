@@ -8,6 +8,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -50,6 +53,11 @@ public class ProductApiController {
                 .build();
     }
 
+    @GetMapping("/page")
+    public Page<ProductDto> getProductsPaginated(@RequestParam("page") int page, @RequestParam("size") int size) {
+        return productService.getProductPaginated(PageRequest.of(page, size));
+    }
+
     @GetMapping(
             path = UUID_PATH,
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
@@ -66,11 +74,13 @@ public class ProductApiController {
     }
 
     @DeleteMapping(path = UUID_PATH)
+    @ApiOperation(value = "Delete product", httpMethod = "DELETE")
     public void deleteProduct(@PathVariable("uuid") UUID productId) {
         productService.deleteProduct(productId);
     }
 
     @PostMapping
+    @ApiOperation(value = "Create product", httpMethod = "POST")
     public ResponseEntity<Void> createProduct(@Valid @RequestBody ProductDto productDto) {
         productService.addProduct(productDto);
 
@@ -78,6 +88,7 @@ public class ProductApiController {
     }
 
     @PutMapping
+    @ApiOperation(value = "Update product", httpMethod = "PUT")
     public ResponseEntity<Void> updateProduct(@Valid @RequestBody ProductDto productDto) {
         if (productService.updateProduct(productDto)) {
             return ResponseEntity.status(HttpStatus.CREATED).build();
