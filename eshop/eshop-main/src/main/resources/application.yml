@@ -10,7 +10,9 @@ spring:
       matching-strategy: ant_path_matcher
 
   profiles:
-    include: amazon
+    include:
+      - amazon
+      - global-users
   main:
     banner-mode: off
   datasource:
@@ -40,8 +42,3 @@ spring:
   servlet:
     multipart:
       max-file-size: 10MB
-
-  security:
-    user:
-      name: user
-      password: user
