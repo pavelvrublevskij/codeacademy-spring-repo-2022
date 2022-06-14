@@ -25,6 +25,12 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
         // set authorization request access
         http = http
                 .authorizeRequests()
+                    .antMatchers(
+                            "/swagger-ui/**",
+                            "/swagger-resources/**",
+                            "/v2/api-docs/**",  // if we want to use old swagger version
+                            "/v3/api-docs/**"
+                ).permitAll()
                 .anyRequest().authenticated()
                 .and();
 
