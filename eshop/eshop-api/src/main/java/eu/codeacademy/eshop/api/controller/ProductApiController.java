@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -39,12 +40,14 @@ public class ProductApiController implements ProductApiSpec {
         productService.deleteProduct(productId);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> createProduct(ProductDto productDto) {
         productService.addProduct(productDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> updateProduct(ProductDto productDto) {
         if (productService.updateProduct(productDto)) {
             return ResponseEntity.status(HttpStatus.CREATED).build();
