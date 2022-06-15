@@ -1,4 +1,4 @@
-package eu.codeacademy.eshop.jpa.user.entity;
+package eu.codeacademy.eshop.security.jpa.entity;
 
 import lombok.Getter;
 

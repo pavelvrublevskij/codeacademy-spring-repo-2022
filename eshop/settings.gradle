@@ -6,4 +6,6 @@ include 'eshop-api'
 include 'security'
 include 'security:security-basic'
 include 'security:security-jwt'
+include 'security:security-jpa'
+findProject(':security:security-jpa')?.name = 'security-jpa'
 

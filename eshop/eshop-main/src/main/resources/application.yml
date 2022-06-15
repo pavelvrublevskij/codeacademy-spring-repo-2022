@@ -42,6 +42,3 @@ spring:
   servlet:
     multipart:
       max-file-size: 10MB
-  security:
-    user:
-      password: user

@@ -1,4 +1,4 @@
-package eu.codeacademy.eshop.jpa.user.entity;
+package eu.codeacademy.eshop.security.jpa.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.util.Set;
-
 
 @AllArgsConstructor
 @NoArgsConstructor
