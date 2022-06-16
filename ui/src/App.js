@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import MyAwesomeComponent from "./components/MyAwesomeComponent";
 import ButtonWithText from "./components/ButtonWithText";
+import ButtonWithTextWithHooks from "./components/ButtonWithTextWithHooks";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         </a>
         <MyAwesomeComponent name="World"/>
         <ButtonWithText text="Nebuvo paspaustas"/>
+        <hr/>
+        <ButtonWithTextWithHooks text="Naujas"/>
       </header>
     </div>
   );
