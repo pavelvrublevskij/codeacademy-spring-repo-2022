@@ -10,6 +10,14 @@ export default class MyAwesomeComponent extends React.Component {
         this.setState({ name: e.target.value })
     }
 
+    componentDidMount() {
+        console.log("mounted")
+    }
+
+    componentDidUpdate() {
+        console.log("updated")
+    }
+
     render() {
         return (
             <>
