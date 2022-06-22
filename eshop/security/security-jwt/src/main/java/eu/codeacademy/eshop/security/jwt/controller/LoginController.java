@@ -1,20 +1,49 @@
 package eu.codeacademy.eshop.security.jwt.controller;
 
 import eu.codeacademy.eshop.commons.swagger.annotation.OpenApi;
+import eu.codeacademy.eshop.security.jwt.dto.LoginRequest;
 import eu.codeacademy.eshop.security.jwt.dto.LoginResponse;
 import eu.codeacademy.eshop.security.jwt.dto.UserRoleDto;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import eu.codeacademy.eshop.security.jwt.service.JwtProvider;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
+
+import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
 @RequestMapping("/login")
 @OpenApi
+@RequiredArgsConstructor
 public class LoginController {
 
+    private final AuthenticationManager authenticationManager;
+
+    private final JwtProvider jwtProvider;
+
     @PostMapping
-    public LoginResponse login(@AuthenticationPrincipal UserRoleDto userRoleDto) {
-        return new LoginResponse(userRoleDto);
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest authRequest) throws Exception {
+        return Optional.of(authenticate(authRequest.getUsername(), authRequest.getPassword()))
+                .map(auth -> (UserRoleDto) auth.getPrincipal())
+                .map(principal -> ok(LoginResponse.of(
+                        authRequest.getUsername(),
+                        principal.getFullName(),
+                        jwtProvider.getToken(principal),
+                        jwtProvider.getExpiresInSeconds()
+                )))
+                .orElseThrow(() -> new BadCredentialsException("Authentication failed"));
+    }
+
+    private Authentication authenticate(String username, String password) {
+        return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
     }
 }
