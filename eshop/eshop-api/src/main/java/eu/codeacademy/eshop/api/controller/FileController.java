@@ -2,6 +2,7 @@ package eu.codeacademy.eshop.api.controller;
 
 import eu.codeacademy.eshop.api.dto.FileResponse;
 import eu.codeacademy.eshop.api.service.FileService;
+import eu.codeacademy.eshop.commons.swagger.annotation.OpenApi;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -22,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequiredArgsConstructor
 @Api(tags = "File Management")
+@OpenApi
 public class FileController {
 
     private static final String FILE_ROOT_PATH = "/file";

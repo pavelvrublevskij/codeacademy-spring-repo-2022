@@ -1,8 +1,9 @@
 package eu.codeacademy.eshop.api.controller;
 
-import eu.codeacademy.eshop.api.dto.ProductsResponse;
 import eu.codeacademy.eshop.api.dto.ProductDto;
+import eu.codeacademy.eshop.api.dto.ProductsResponse;
 import eu.codeacademy.eshop.api.service.product.ProductService;
+import eu.codeacademy.eshop.commons.swagger.annotation.OpenApi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,6 +17,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
+@OpenApi
 public class ProductApiController implements ProductApiSpec {
 
     private final ProductService productService;

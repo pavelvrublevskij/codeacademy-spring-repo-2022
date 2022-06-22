@@ -1,5 +1,6 @@
 package eu.codeacademy.eshop.api.config;
 
+import eu.codeacademy.eshop.commons.swagger.annotation.OpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -18,7 +19,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.OAS_30)
                 .apiInfo(getInfo())
                 .select()
-                    .apis(RequestHandlerSelectors.basePackage("eu.codeacademy.eshop.api"))
+                    .apis(RequestHandlerSelectors.withClassAnnotation(OpenApi.class))
                 .build();
     }
 
