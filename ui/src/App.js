@@ -3,6 +3,7 @@ import './App.css';
 import MyAwesomeComponent from "./components/MyAwesomeComponent";
 import ButtonWithText from "./components/ButtonWithText";
 import ButtonWithTextWithHooks from "./components/ButtonWithTextWithHooks";
+import Product from "./components/Product";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         <ButtonWithText text="Nebuvo paspaustas"/>
         <hr/>
         <ButtonWithTextWithHooks text="Naujas"/>
+        <hr/>
+        <Product/>
       </header>
     </div>
   );
