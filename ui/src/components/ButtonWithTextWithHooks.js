@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-export default (props) => {
+const ButtonWithTextWithHooks = (props) => {
 
     const [counter, setCounter] = useState(0)
 
@@ -13,3 +13,5 @@ export default (props) => {
         </>
     )
 }
+
+export default ButtonWithTextWithHooks
