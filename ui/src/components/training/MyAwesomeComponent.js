@@ -1,21 +1,21 @@
-import React from "react";
+import React from 'react';
 
 export default class MyAwesomeComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { name: this.props.name }
+        this.state = { name: this.props.name };
     }
 
     onChange = (e) => {
-        this.setState({ name: e.target.value })
-    }
+        this.setState({ name: e.target.value });
+    };
 
     componentDidMount() {
-        console.log("mounted")
+        console.log('mounted');
     }
 
     componentDidUpdate() {
-        console.log("updated")
+        console.log('updated');
     }
 
     render() {
