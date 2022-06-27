@@ -1,14 +1,25 @@
 import HeaderContainer from './Header';
-import ContentContainer from './Content';
+import {
+    Routes,
+    Route,
+} from "react-router-dom";
 import FooterContainer from './Footer/FooterContainer';
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import HomePage from './Pages/HomePage/HomePage';
 
 function App() {
-    return <div className='mainApp'>
-        <HeaderContainer />
-        <ContentContainer />
-        <FooterContainer />
-    </div>;
+    return (
+        <BrowserRouter>
+            <div className='mainApp'>
+                <HeaderContainer />
+                <Routes>
+                    <Route path='/' element={ <HomePage /> } />
+                </Routes>
+                <FooterContainer />
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;
