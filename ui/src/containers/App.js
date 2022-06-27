@@ -1,5 +1,5 @@
 import HeaderContainer from './Header';
-import ContentContainer from './Content/ContentContainer';
+import ContentContainer from './Content';
 import FooterContainer from './Footer/FooterContainer';
 
 function App() {
