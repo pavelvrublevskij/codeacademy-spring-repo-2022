@@ -1,3 +1,4 @@
-const ContentContainer = () => <span>Content</span>;
+const ContentContainer = () => <h2>Content</h2>
+;
 
 export default ContentContainer;
