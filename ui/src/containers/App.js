@@ -7,6 +7,7 @@ import FooterContainer from './Footer/FooterContainer';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import HomePage from './Pages/HomePage/HomePage';
+import NewProductPage from './Pages/NewProductPage/NewProductPage';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <HeaderContainer />
                 <Routes>
                     <Route path='/' element={ <HomePage /> } />
+                    <Route path='/products/create' element={ <NewProductPage /> } />
                 </Routes>
                 <FooterContainer />
             </div>
