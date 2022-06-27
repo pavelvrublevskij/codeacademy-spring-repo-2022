@@ -1,9 +1,10 @@
 import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 const HeaderContainer = () =>
     <Navbar bg="light" expand="lg">
         <Container fluid>
-            <Navbar.Brand href="/">E-Shop</Navbar.Brand>
+            <Navbar.Brand to="/" as={ NavLink }>E-Shop</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
                 <Nav
@@ -12,7 +13,7 @@ const HeaderContainer = () =>
                     navbarScroll
                 >
                     <Nav.Link href="/products">Products</Nav.Link>
-                    <Nav.Link href="/products/create">New Product</Nav.Link>
+                    <Nav.Link to="/products/create" as={ NavLink }>New Product</Nav.Link>
                     <Nav.Link href="#" disabled>
                         Users
                     </Nav.Link>
