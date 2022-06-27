@@ -1,3 +1,5 @@
-const NewProductPage = () => <h1>This is New Product Page</h1>
+import Product from '../../../components/Product';
+
+const NewProductPage = () => <Product />
 
 export default NewProductPage;
