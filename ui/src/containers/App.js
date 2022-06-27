@@ -1,4 +1,4 @@
-import HeaderContainer from './Header/HeaderContainer';
+import HeaderContainer from './Header';
 import ContentContainer from './Content/ContentContainer';
 import FooterContainer from './Footer/FooterContainer';
 
