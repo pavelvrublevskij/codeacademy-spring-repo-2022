@@ -48,15 +48,17 @@ const NewProductPage = () => {
                     placeholderText="Write price"
                     name="price"
                     labelText="Product price"
+
                 />
 
-                <Form.Group className='mb-3' controlId='description'>
-                    <Form.Label>Product description</Form.Label>
-                    <Form.Control placeholder='Write description'
-                                  name="description"
-                                  as="textarea"
-                                  onChange={handleChange} />
-                </Form.Group>
+                <FormLabelControl
+                    className="mb-3"
+                    onChange={handleChange}
+                    placeholderText="Write description"
+                    name="description"
+                    labelText="Product description"
+                    isTextArea
+                />
 
                 <Button variant='primary' type='submit'>
                     Submit
