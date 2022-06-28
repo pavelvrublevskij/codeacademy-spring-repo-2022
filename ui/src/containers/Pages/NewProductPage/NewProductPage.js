@@ -26,17 +26,20 @@ const NewProductPage = () => {
         setVisible(true);
     };
 
-    const showCreatedProductInfo = visible &&
-        <>
-            <hr/>
-            <div>
-                Sukurtas produkas:
-                <div>{product.name}</div>
-                <div>{product.quantity}</div>
-                <div>{product.price}</div>
-                <div>{product.description}</div>
-            </div>
-        </>
+    const showCreatedProductInfo = () => {
+        const {name, quantity, price, description} = product;
+        return visible &&
+            <>
+                <hr/>
+                <div>
+                    Sukurtas produkas:
+                    <div>{name}</div>
+                    <div>{quantity}</div>
+                    <div>{price}</div>
+                    <div>{description}</div>
+                </div>
+            </>;
+    }
 
     return (
         <Container>
@@ -78,7 +81,7 @@ const NewProductPage = () => {
                     Submit
                 </Button>
             </Form>
-            { showCreatedProductInfo }
+            { showCreatedProductInfo() }
         </Container>
     );
 };
