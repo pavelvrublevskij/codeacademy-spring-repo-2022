@@ -9,6 +9,7 @@ const NewProductPage = () => {
         price: '',
         description: '',
     });
+    const [visible, setVisible] = useState(false);
 
     const handleChange = (e) => {
         setProduct({
@@ -21,6 +22,8 @@ const NewProductPage = () => {
         e.preventDefault();
 
         console.log(product);
+
+        setVisible(true);
     };
 
     return (
@@ -48,7 +51,6 @@ const NewProductPage = () => {
                     placeholderText="Write price"
                     name="price"
                     labelText="Product price"
-
                 />
 
                 <FormLabelControl
@@ -64,6 +66,18 @@ const NewProductPage = () => {
                     Submit
                 </Button>
             </Form>
+            { visible &&
+                <>
+                    <hr/>
+                    <div>
+                        Sukurtas produkas:
+                        <div>{product.name}</div>
+                        <div>{product.quantity}</div>
+                        <div>{product.price}</div>
+                        <div>{product.description}</div>
+                    </div>
+                </>
+            }
         </Container>
     );
 };
