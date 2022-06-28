@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
+import FormLabelControl from '../../../components/Form/FormLabelControl/FormLabelControl';
 
 const NewProductPage = () => {
     const [product, setProduct] = useState({
@@ -25,26 +26,29 @@ const NewProductPage = () => {
     return (
         <Container>
             <Form onSubmit={onSubmit}>
-                <Form.Group className='mb-3' controlId='name'>
-                    <Form.Label>Product name</Form.Label>
-                    <Form.Control placeholder='Write name'
-                                  name="name"
-                                  onChange={handleChange} />
-                </Form.Group>
+                <FormLabelControl
+                    className="mb-3"
+                    onChange={handleChange}
+                    placeholderText="Write name"
+                    name="name"
+                    labelText="Product name"
+                />
 
-                <Form.Group className='mb-3' controlId='quantity'>
-                    <Form.Label>Product quantity</Form.Label>
-                    <Form.Control placeholder='Write quantity'
-                                  name="quantity"
-                                  onChange={handleChange} />
-                </Form.Group>
+                <FormLabelControl
+                    className="mb-3"
+                    onChange={handleChange}
+                    placeholderText="Write quantity"
+                    name="quantity"
+                    labelText="Product quantity"
+                />
 
-                <Form.Group className='mb-3' controlId='price'>
-                    <Form.Label>Product price</Form.Label>
-                    <Form.Control placeholder='Write price'
-                                  name="price"
-                                  onChange={handleChange} />
-                </Form.Group>
+                <FormLabelControl
+                    className="mb-3"
+                    onChange={handleChange}
+                    placeholderText="Write price"
+                    name="price"
+                    labelText="Product price"
+                />
 
                 <Form.Group className='mb-3' controlId='description'>
                     <Form.Label>Product description</Form.Label>
