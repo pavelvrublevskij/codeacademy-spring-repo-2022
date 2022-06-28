@@ -1,5 +1,9 @@
 import HTTP from './axiosConfig';
 
-const getProducts = () => HTTP.get("/products")
+const getProductsApi = () => HTTP.get("/products")
 
-const createProduct = (productData) => HTTP.post("/products", productData)
+const createProductApi = (productData) => HTTP.post("/products", productData)
+
+export {
+    getProductsApi
+}

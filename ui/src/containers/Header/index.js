@@ -22,13 +22,9 @@ const HeaderContainer = () => (
                     style={{ maxHeight: '100px' }}
                     navbarScroll
                 >
-                    <Nav.Link href="/products">Products</Nav.Link>
-                    <Nav.Link to="/products/create" as={NavLink}>
-                        New Product
-                    </Nav.Link>
-                    <Nav.Link href="#" disabled>
-                        Users
-                    </Nav.Link>
+                    <Nav.Link to="/products" as={NavLink}>Products</Nav.Link>
+                    <Nav.Link to="/products/create" as={NavLink}>New Product</Nav.Link>
+                    <Nav.Link href="#" disabled>Users</Nav.Link>
                 </Nav>
                 <NavDropdown title="Languages" id="navbarScrollingDropdown">
                     <NavDropdown.Item href="#action3">LT</NavDropdown.Item>
