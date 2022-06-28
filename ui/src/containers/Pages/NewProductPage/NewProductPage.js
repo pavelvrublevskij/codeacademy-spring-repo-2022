@@ -50,6 +50,7 @@ const NewProductPage = () => {
                     <Form.Label>Product description</Form.Label>
                     <Form.Control placeholder='Write description'
                                   name="description"
+                                  as="textarea"
                                   onChange={handleChange} />
                 </Form.Group>
 
