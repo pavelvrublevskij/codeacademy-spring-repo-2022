@@ -8,6 +8,7 @@ import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import HomePage from './Pages/HomePage/HomePage';
 import NewProductPage from './Pages/NewProductPage/NewProductPage';
+import ProductPage from './Pages/ProductPage/ProductPage';
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                 <Routes>
                     <Route path='/' element={ <HomePage /> } />
                     <Route path='/products/create' element={ <NewProductPage /> } />
+                    <Route path='/products/:productId' element={ <ProductPage /> } />
                 </Routes>
                 <FooterContainer />
             </div>
