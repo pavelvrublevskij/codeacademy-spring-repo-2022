@@ -7,7 +7,7 @@ import Pages from './Pages';
 function App() {
     return (
         <BrowserRouter>
-            <div className='mainApp'>
+            <div className="mainApp">
                 <HeaderContainer />
                 <Pages />
                 <FooterContainer />

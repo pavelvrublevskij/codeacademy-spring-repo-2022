@@ -5,8 +5,8 @@ import ProductPage from './ProductPage/ProductPage';
 
 export default () => (
     <Routes>
-        <Route path='/' element={ <HomePage /> } />
-        <Route path='/products/create' element={ <NewProductPage /> } />
-        <Route path='/products/:productId' element={ <ProductPage /> } />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/products/create" element={<NewProductPage />} />
+        <Route path="/products/:productId" element={<ProductPage />} />
     </Routes>
-)
+);

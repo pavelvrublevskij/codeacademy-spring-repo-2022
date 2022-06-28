@@ -1,5 +1,5 @@
 import Product from '../../../components/Product';
 
-const NewProductPage = () => <Product />
+const NewProductPage = () => <Product />;
 
 export default NewProductPage;
