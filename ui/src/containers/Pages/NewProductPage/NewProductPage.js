@@ -26,6 +26,18 @@ const NewProductPage = () => {
         setVisible(true);
     };
 
+    const showCreatedProductInfo = visible &&
+        <>
+            <hr/>
+            <div>
+                Sukurtas produkas:
+                <div>{product.name}</div>
+                <div>{product.quantity}</div>
+                <div>{product.price}</div>
+                <div>{product.description}</div>
+            </div>
+        </>
+
     return (
         <Container>
             <Form onSubmit={onSubmit}>
@@ -66,18 +78,7 @@ const NewProductPage = () => {
                     Submit
                 </Button>
             </Form>
-            { visible &&
-                <>
-                    <hr/>
-                    <div>
-                        Sukurtas produkas:
-                        <div>{product.name}</div>
-                        <div>{product.quantity}</div>
-                        <div>{product.price}</div>
-                        <div>{product.description}</div>
-                    </div>
-                </>
-            }
+            { showCreatedProductInfo }
         </Container>
     );
 };
