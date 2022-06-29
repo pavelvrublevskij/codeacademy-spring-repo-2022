@@ -9,7 +9,6 @@ const ProductsPage = () => {
     useEffect(() => {
         getProductsApi()
             .then(({data}) => {
-                console.log(data)
                 setProductItems(data.products)
             })
             .catch((error) => console.log('error', error))
