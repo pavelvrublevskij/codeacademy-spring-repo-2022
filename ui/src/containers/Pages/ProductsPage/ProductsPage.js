@@ -1,4 +1,4 @@
-import { getProductsApi } from '../../../api/apiEndpoints';
+import { getProductsEndpoint } from '../../../api/apiEndpoints';
 import { useEffect, useState } from 'react';
 import { Card, Col, Container, Row, Spinner } from 'react-bootstrap';
 
@@ -8,7 +8,7 @@ const ProductsPage = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getProductsApi()
+        getProductsEndpoint()
             .then(({ data }) => {
                 setProductItems(data.products);
             })

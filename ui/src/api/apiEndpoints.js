@@ -1,6 +1,6 @@
 import HTTP from './axiosConfig';
 
-const getProductsApi = () =>
+const getProductsEndpoint = () =>
     HTTP.get("/products")
         .finally(response =>
             new Promise((resolve, reject) => {
@@ -10,8 +10,8 @@ const getProductsApi = () =>
             })
         )
 
-const createProductApi = (productData) => HTTP.post("/products", productData)
+const createProductEndpoint = (productData) => HTTP.post("/products", productData)
 
 export {
-    getProductsApi
+    getProductsEndpoint
 }
