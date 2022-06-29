@@ -47,7 +47,10 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
         // set authorization request access
         http = http
                 .authorizeRequests()
-                    .antMatchers("/login").permitAll()
+                    .antMatchers(
+                            "/login",
+                            "/products"
+                    ).permitAll()
                     .antMatchers(
                             "/swagger-ui/**",
                             "/swagger-resources/**",
