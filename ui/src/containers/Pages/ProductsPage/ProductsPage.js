@@ -13,7 +13,7 @@ const ProductsPage = () => {
                 setProductItems(data.products)
             })
             .catch((error) => console.log('error', error))
-    })
+    }, [])
 
     return (
         <Container fluid>
