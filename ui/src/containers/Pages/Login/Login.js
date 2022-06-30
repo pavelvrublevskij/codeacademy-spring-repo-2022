@@ -1,58 +1,49 @@
-import {useState} from "react";
+import {Form, Formik} from "formik";
 
 const Login = () => {
 
-    const [login, setLogin] = useState({
-        email: ''
-    })
+    const validate = (login) => {
 
-    const [errors, setErrors] = useState({
-        email: ''
-    })
+        const errors = {}
 
-    const onSubmit = (e) => {
-        e.preventDefault()
-
-        console.log("login", login)
-    }
-
-    const onChange = (e) => {
-        const email = e.target.value
-
-        const errMessage = validateEmail(email)
-
-        setErrors({
-            email: errMessage
-        })
-
-        setLogin({
-            email
-        })
-    }
-
-    const validateEmail = (email) => {
-
-        if (!email.includes("@")) {
-            return "CIA NE EMAIL'AS!!!";
+        if (!login.email.includes("@")) {
+            errors.email = "CIA NE EMAIL'AS!!!";
         }
 
-        return ''
+        return errors
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <div>
-                <label>Email</label>
-                <input name="email" value={login.email} onChange={onChange}/>
-                {
-                    errors.email && <span color="red">{errors.email}</span>
-                }
-            </div>
+        <Formik initialValues={{
+                email: ''
+            }}
+            onSubmit={(login, helper) => {
 
-            <div>
-                <button type="submit">Submit</button>
-            </div>
-        </form>
+                console.log("login", login)
+            }}
+            validate={validate}
+        >
+            {props => (
+                <Form>
+                    <div>
+                        <label>Email</label>
+                        <input name="email"
+                               onChange={props.handleChange}
+                               onBlur={props.handleBlur}
+                               value={props.values.name}
+                        />
+                        {
+                            props.errors.email && <span>{props.errors.email}</span>
+                        }
+                    </div>
+
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
+                </Form>
+            )
+            }
+        </Formik>
     )
 }
 
