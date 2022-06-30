@@ -4,6 +4,7 @@ import NewProductPage from './NewProductPage/NewProductPage';
 import ProductPage from './ProductPage/ProductPage';
 import ProductsPage from './ProductsPage/ProductsPage';
 import CartPage from './CartPage/CartPage';
+import Login from "./Login/Login";
 
 export default () => (
     <Routes>
@@ -12,5 +13,6 @@ export default () => (
         <Route path="/products/create" element={<NewProductPage />} />
         <Route path="/products/:productId" element={<ProductPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/login" element={<Login />} />
     </Routes>
 );
