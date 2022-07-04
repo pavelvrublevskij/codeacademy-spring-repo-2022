@@ -1,4 +1,4 @@
-import { Form, Formik } from 'formik';
+import { Field, Form, Formik } from 'formik';
 
 const Login = () => {
 
@@ -32,11 +32,7 @@ const Login = () => {
                         <Form>
                             <div>
                                 <label>Email</label>
-                                <input name="email"
-                                       onChange={props.handleChange}
-                                       onBlur={props.handleBlur}
-                                       value={props.values.name}
-                                />
+                                <Field name='email' />
                                 {
                                     props.errors.email && <span>{props.errors.email}</span>
                                 }
