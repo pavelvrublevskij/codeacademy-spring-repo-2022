@@ -20,7 +20,6 @@ const Login = () => {
             errors.password = "Slaptazodzio ilgis turi buti >= 6"
         }
 
-
         return errors
     }
 
@@ -48,7 +47,7 @@ const Login = () => {
                                         const isValid = !form.errors[field.name];
                                         const isInvalid = form.touched[field.name] && !isValid;
                                         return (
-                                            <BootstrapForm.Group controlId='email'>
+                                            <BootstrapForm.Group controlId={field.name}>
                                                 <BootstrapForm.Label>Email:</BootstrapForm.Label>
                                                 <InputGroup>
                                                     <BootstrapForm.Control
@@ -72,7 +71,7 @@ const Login = () => {
                                         const isValid = !form.errors[field.name];
                                         const isInvalid = form.touched[field.name] && !isValid;
                                         return (
-                                            <BootstrapForm.Group controlId='email'>
+                                            <BootstrapForm.Group controlId={field.name}>
                                                 <BootstrapForm.Label>Password:</BootstrapForm.Label>
                                                 <InputGroup>
                                                     <BootstrapForm.Control
