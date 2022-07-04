@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from 'formik';
 import {
     Button,
-    Container,
+    Container, Spinner,
 } from 'react-bootstrap';
 import FormikFieldInputGroup from '../../../components/Formik/FormikFieldInputGroup/FormikFieldInputGroup';
 
@@ -49,8 +49,24 @@ const Login = () => {
                                        labelText='Password:'
                                        type='password'
                                        component={FormikFieldInputGroup} />
-                                <div>
-                                    <Button type='submit'>Submit</Button>
+
+                                <div className="text-center">
+                                    {props.isSubmitting
+                                        ? <Button variant='primary' disabled>
+                                            <Spinner
+                                                as='span'
+                                                animation='grow'
+                                                size='sm'
+                                                role='status'
+                                                aria-hidden='true'
+                                            />
+                                            Processing...
+                                        </Button>
+                                        :  <Button type='submit'
+                                                   variant='primary'>
+                                                Submit
+                                           </Button>
+                                    }
                                 </div>
                             </Form>
                         </Container>
