@@ -1,10 +1,9 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Field, Form, Formik } from 'formik';
 import {
     Button,
     Container,
-    Form as BootstrapForm,
-    InputGroup,
 } from 'react-bootstrap';
+import FormikFieldInputGroup from '../../../components/Formik/FormikFieldInputGroup/FormikFieldInputGroup';
 
 const Login = () => {
 
@@ -42,54 +41,14 @@ const Login = () => {
                     return (
                         <Container>
                             <Form>
-                                <Field name="email">
-                                    {({ field, form }) => {  // form -> Field form props
-                                        const isValid = !form.errors[field.name];
-                                        const isInvalid = form.touched[field.name] && !isValid;
-                                        return (
-                                            <BootstrapForm.Group controlId={field.name}>
-                                                <BootstrapForm.Label>Email:</BootstrapForm.Label>
-                                                <InputGroup>
-                                                    <BootstrapForm.Control
-                                                        type='text'
-                                                        name={field.name}
-                                                        isValid={form.touched[field.name] && isValid}
-                                                        isInvalid={isInvalid}
-                                                        feedback={form.errors[field.name]}
-                                                        onChange={field.onChange}
-                                                    />
-                                                    <BootstrapForm.Control.Feedback type="invalid">
-                                                        {form.errors[field.name]}
-                                                    </BootstrapForm.Control.Feedback>
-                                                </InputGroup>
-                                            </BootstrapForm.Group>
-                                        );
-                                    }}
-                                </Field>
-                                <Field name="password">
-                                    {({ field, form }) => {  // form -> Field form props
-                                        const isValid = !form.errors[field.name];
-                                        const isInvalid = form.touched[field.name] && !isValid;
-                                        return (
-                                            <BootstrapForm.Group controlId={field.name}>
-                                                <BootstrapForm.Label>Password:</BootstrapForm.Label>
-                                                <InputGroup>
-                                                    <BootstrapForm.Control
-                                                        type='password'
-                                                        name={field.name}
-                                                        isValid={form.touched[field.name] && isValid}
-                                                        isInvalid={isInvalid}
-                                                        feedback={form.errors[field.name]}
-                                                        onChange={field.onChange}
-                                                    />
-                                                    <BootstrapForm.Control.Feedback type="invalid">
-                                                        {form.errors[field.name]}
-                                                    </BootstrapForm.Control.Feedback>
-                                                </InputGroup>
-                                            </BootstrapForm.Group>
-                                        );
-                                    }}
-                                </Field>
+                                <Field name='email'
+                                       labelText='Email:'
+                                       type='text'
+                                       component={FormikFieldInputGroup} />
+                                <Field name='password'
+                                       labelText='Password:'
+                                       type='password'
+                                       component={FormikFieldInputGroup} />
                                 <div>
                                     <Button type='submit'>Submit</Button>
                                 </div>
