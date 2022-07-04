@@ -1,4 +1,5 @@
-import { Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Container, Form as BootstrapForm} from 'react-bootstrap';
 
 const Login = () => {
 
@@ -29,18 +30,18 @@ const Login = () => {
                     console.log('React formik props', props)
 
                     return (
-                        <Form>
-                            <div>
-                                <label>Email</label>
-                                <Field name='email' />
-                                {
-                                    props.errors.email && <span>{props.errors.email}</span>
-                                }
-                            </div>
-                            <div>
-                                <button type='submit'>Submit</button>
-                            </div>
-                        </Form>
+                        <Container>
+                            <Form component={BootstrapForm}>
+                                <div>
+                                    <label>Email</label>
+                                    <Field name='email'  />
+                                    <ErrorMessage name='email' style={{color: 'red'}} component={'div'}/>
+                                </div>
+                                <div>
+                                    <button type='submit'>Submit</button>
+                                </div>
+                            </Form>
+                        </Container>
                     )
                 }
             }
