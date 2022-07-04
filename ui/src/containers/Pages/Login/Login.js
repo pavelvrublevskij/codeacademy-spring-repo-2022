@@ -16,6 +16,11 @@ const Login = () => {
             errors.email = "CIA NE EMAIL'AS!!!";
         }
 
+        if (login.password.length < 6 ) {
+            errors.password = "Slaptazodzio ilgis turi buti >= 6"
+        }
+
+
         return errors
     }
 
@@ -23,6 +28,7 @@ const Login = () => {
         <Formik
             initialValues={{
                 email: '',
+                password: '',
             }}
             onSubmit={(login, helper) => {
 
@@ -39,10 +45,6 @@ const Login = () => {
                             <Form>
                                 <Field name="email">
                                     {({ field, form }) => {  // form -> Field form props
-
-                                        console.log('field', field)
-                                        console.log('form', form)
-
                                         const isValid = !form.errors[field.name];
                                         const isInvalid = form.touched[field.name] && !isValid;
                                         return (
@@ -51,6 +53,30 @@ const Login = () => {
                                                 <InputGroup>
                                                     <BootstrapForm.Control
                                                         type='text'
+                                                        name={field.name}
+                                                        isValid={form.touched[field.name] && isValid}
+                                                        isInvalid={isInvalid}
+                                                        feedback={form.errors[field.name]}
+                                                        onChange={field.onChange}
+                                                    />
+                                                    <BootstrapForm.Control.Feedback type="invalid">
+                                                        {form.errors[field.name]}
+                                                    </BootstrapForm.Control.Feedback>
+                                                </InputGroup>
+                                            </BootstrapForm.Group>
+                                        );
+                                    }}
+                                </Field>
+                                <Field name="password">
+                                    {({ field, form }) => {  // form -> Field form props
+                                        const isValid = !form.errors[field.name];
+                                        const isInvalid = form.touched[field.name] && !isValid;
+                                        return (
+                                            <BootstrapForm.Group controlId='email'>
+                                                <BootstrapForm.Label>Password:</BootstrapForm.Label>
+                                                <InputGroup>
+                                                    <BootstrapForm.Control
+                                                        type='password'
                                                         name={field.name}
                                                         isValid={form.touched[field.name] && isValid}
                                                         isInvalid={isInvalid}
