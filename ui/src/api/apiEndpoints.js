@@ -25,5 +25,6 @@ const loginEndpoint = (loginData) => HTTP.post("/login", loginData)
 
 export {
     getProductsEndpoint,
+    createProductEndpoint,
     loginEndpoint,
 }

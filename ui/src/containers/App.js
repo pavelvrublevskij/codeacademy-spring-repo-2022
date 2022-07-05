@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Pages from './Pages';
 import { AuthUserContext, initialAuthUserObj } from '../contexts/AuthUserContext';
 import { useState } from 'react';
+import { saveToSessionStorage, StorageKey } from '../utils/sessionStorage';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         authUser,
         putAuthUser: (data) => {  // data = { username: '', fullname: '', jwtToken: ''}
             setAuthUser(data)
+            saveToSessionStorage(StorageKey.jwt, data.jwtToken)
         },
     }
 

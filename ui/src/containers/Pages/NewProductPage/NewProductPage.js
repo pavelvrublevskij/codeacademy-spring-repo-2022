@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import FormLabelControl from '../../../components/Form/FormLabelControl/FormLabelControl';
+import { createProductEndpoint } from '../../../api/apiEndpoints';
+import { AuthUserContext } from '../../../contexts/AuthUserContext';
 
 const NewProductPage = () => {
     const [product, setProduct] = useState({
@@ -10,6 +12,8 @@ const NewProductPage = () => {
         description: '',
     });
     const [visible, setVisible] = useState(false);
+
+    const { authUser } = useContext(AuthUserContext)
 
     const handleChange = (e) => {
         setProduct({
@@ -21,9 +25,9 @@ const NewProductPage = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        console.log(product);
+        createProductEndpoint(product)
+            .then((response) => setVisible(true))
 
-        setVisible(true);
     };
 
     const showCreatedProductInfo = () => {
