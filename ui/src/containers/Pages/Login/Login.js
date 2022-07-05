@@ -41,41 +41,38 @@ const Login = () => {
             validationSchema={validationSchema}
         >
             {
-                props => {
-                    return (
-                        <Container>
-                            <Form>
-                                <Field name='email'
-                                       labelText='Email:'
-                                       type='text'
-                                       component={FormikFieldInputGroup} />
-                                <Field name='password'
-                                       labelText='Password:'
-                                       type='password'
-                                       component={FormikFieldInputGroup} />
+                props =>
+                    <Container>
+                        <Form>
+                            <Field name='email'
+                                   labelText='Email:'
+                                   type='text'
+                                   component={FormikFieldInputGroup} />
+                            <Field name='password'
+                                   labelText='Password:'
+                                   type='password'
+                                   component={FormikFieldInputGroup} />
 
-                                <div className="text-center">
-                                    {props.isSubmitting
-                                        ? <Button variant='primary' disabled>
-                                            <Spinner
-                                                as='span'
-                                                animation='grow'
-                                                size='sm'
-                                                role='status'
-                                                aria-hidden='true'
-                                            />
-                                            Processing...
-                                        </Button>
-                                        :  <Button type='submit'
-                                                   variant='primary'>
-                                                Submit
-                                           </Button>
-                                    }
-                                </div>
-                            </Form>
-                        </Container>
-                    )
-                }
+                            <div className='text-center'>
+                                {props.isSubmitting
+                                    ? <Button variant='primary' disabled>
+                                        <Spinner
+                                            as='span'
+                                            animation='grow'
+                                            size='sm'
+                                            role='status'
+                                            aria-hidden='true'
+                                        />
+                                        Processing...
+                                    </Button>
+                                    : <Button type='submit'
+                                              variant='primary'>
+                                        Submit
+                                    </Button>
+                                }
+                            </div>
+                        </Form>
+                    </Container>
             }
         </Formik>
     );
