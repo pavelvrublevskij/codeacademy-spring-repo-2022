@@ -19,20 +19,25 @@ const validationSchema = Yup.object().shape({
 });
 
 const Login = () => {
+
+    const postLogin = (login, helper) => {
+        loginEndpoint({
+            username: login.email,
+            password: login.password,
+        }).then((response) =>
+            console.log('login response', response),
+        )
+            .catch((error) => console.log(error))
+            .finally(() => helper.setSubmitting(false));
+    }
+
     return (
         <Formik
             initialValues={{
                 email: '',
                 password: '',
             }}
-            onSubmit={(login, helper) => {
-                loginEndpoint({
-                    username: login.email,
-                    password: login.password
-                }).then((response) =>
-                    console.log('login response', response)
-                );
-            }}
+            onSubmit={postLogin}
             validationSchema={validationSchema}
         >
             {
