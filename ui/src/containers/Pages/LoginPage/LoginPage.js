@@ -21,7 +21,7 @@ const validationSchema = Yup.object().shape({
         .required(),
 });
 
-const Login = () => {
+const LoginPage = () => {
 
     const { putAuthUser } = useContext(AuthUserContext)
     const navigate = useNavigate()
@@ -85,4 +85,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default LoginPage;
