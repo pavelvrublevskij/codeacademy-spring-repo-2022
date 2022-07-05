@@ -51,9 +51,14 @@ const HeaderContainer = () => {
                         />
                         <Button variant="outline-success">Search</Button>
                     </Form>
-                    <Nav.Link href="#" disabled>
-                        Login
-                    </Nav.Link>
+                    {!authUser.username
+                        ? <Nav.Link to="/login" as={NavLink}>
+                            Login
+                        </Nav.Link>
+                        : <Nav.Link href="/login">
+                            Logout
+                        </Nav.Link>
+                    }
                 </Navbar.Collapse>
             </Container>
         </Navbar>

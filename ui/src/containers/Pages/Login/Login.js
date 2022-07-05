@@ -8,6 +8,7 @@ import * as Yup from 'yup';
 import { loginEndpoint } from '../../../api/apiEndpoints';
 import { useContext } from 'react';
 import { AuthUserContext } from '../../../contexts/AuthUserContext';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -23,6 +24,7 @@ const validationSchema = Yup.object().shape({
 const Login = () => {
 
     const { putAuthUser } = useContext(AuthUserContext)
+    const navigate = useNavigate()
 
     const postLogin = (login, helper) => {
         loginEndpoint({
@@ -30,6 +32,7 @@ const Login = () => {
             password: login.password,
         }).then(({ data }) => {
             putAuthUser(data)
+            navigate("/")
         })
         .catch((error) => console.log(error))
         .finally(() => helper.setSubmitting(false))
