@@ -5,6 +5,7 @@ import {
 } from 'react-bootstrap';
 import FormikFieldInputGroup from '../../../components/Formik/FormikFieldInputGroup/FormikFieldInputGroup';
 import * as Yup from 'yup';
+import { loginEndpoint } from '../../../api/apiEndpoints';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -13,7 +14,7 @@ const validationSchema = Yup.object().shape({
         //.email()
         .matches(/^(.+)@(.+)$/, 'email neatitinka standarto'),
     password: Yup.string()
-        .min(6, 'Slaptazodzio ilgis turi buti >= 6')
+        .min(4, 'Slaptazodzio ilgis turi buti >= 4')
         .required(),
 });
 
@@ -25,15 +26,17 @@ const Login = () => {
                 password: '',
             }}
             onSubmit={(login, helper) => {
-
-                console.log('login', login);
+                loginEndpoint({
+                    username: login.email,
+                    password: login.password
+                }).then((response) =>
+                    console.log('login response', response)
+                );
             }}
             validationSchema={validationSchema}
         >
             {
                 props => {
-                    console.log('React formik props', props)
-
                     return (
                         <Container>
                             <Form>
