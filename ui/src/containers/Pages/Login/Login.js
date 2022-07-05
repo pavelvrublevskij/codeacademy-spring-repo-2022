@@ -6,6 +6,8 @@ import {
 import FormikFieldInputGroup from '../../../components/Formik/FormikFieldInputGroup/FormikFieldInputGroup';
 import * as Yup from 'yup';
 import { loginEndpoint } from '../../../api/apiEndpoints';
+import { useContext } from 'react';
+import { AuthUserContext } from '../../../contexts/AuthUserContext';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -20,16 +22,18 @@ const validationSchema = Yup.object().shape({
 
 const Login = () => {
 
+    const { putAuthUser } = useContext(AuthUserContext)
+
     const postLogin = (login, helper) => {
         loginEndpoint({
             username: login.email,
             password: login.password,
-        }).then((response) =>
-            console.log('login response', response),
-        )
-            .catch((error) => console.log(error))
-            .finally(() => helper.setSubmitting(false));
-    }
+        }).then(({ data }) => {
+            putAuthUser(data)
+        })
+        .catch((error) => console.log(error))
+        .finally(() => helper.setSubmitting(false))
+    };
 
     return (
         <Formik
