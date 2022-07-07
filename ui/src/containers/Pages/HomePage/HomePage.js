@@ -7,8 +7,8 @@ const HomePage = () => {
     return (
         <>
             <h1>This is Home Page</h1>
-            <h2>{t("hello")}</h2>
-            <h2>{t("hello", { lng: "lt" })}</h2>
+            <h2>{t("hello", { name: "CodeAcademy" })}</h2>
+            <h2>{t("hello", { name: "Pasauli", lng: "lt" })}</h2>
         </>
     );
 }

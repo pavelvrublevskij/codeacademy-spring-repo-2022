@@ -1,5 +1,5 @@
 {
   "common": {
-    "hello": "Hello, World!"
+    "hello": "Hello, {{name}}!"
   }
 }
