@@ -1,5 +1,22 @@
 {
   "common": {
-    "hello": "Labas, {{name}}!"
+    "hello": "Labas, {{name}}!",
+    "buttons": {
+      "submit": "Išsaugoti"
+    }
+  },
+  "productForm": {
+    "labels": {
+      "name": "Produkto pavadinimas",
+      "quantity": "Produkto kiekis",
+      "price": "Produkto kaina",
+      "description": "Produkto aprašymas"
+    },
+    "placeholders": {
+      "name": "Nurodykite pavadinimą",
+      "quantity": "Nurodykite kiekį",
+      "price": "Nurodykite kainą",
+      "description": "Nurodykite aprašymą"
+    }
   }
 }

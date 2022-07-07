@@ -3,6 +3,7 @@ import { Button, Container, Form } from 'react-bootstrap';
 import FormLabelControl from '../../../components/Form/FormLabelControl/FormLabelControl';
 import { createProductEndpoint } from '../../../api/apiEndpoints';
 import { AuthUserContext } from '../../../contexts/AuthUserContext';
+import { useTranslation } from "react-i18next";
 
 const NewProductPage = () => {
     const [product, setProduct] = useState({
@@ -14,6 +15,8 @@ const NewProductPage = () => {
     const [visible, setVisible] = useState(false);
 
     const { authUser } = useContext(AuthUserContext)
+
+    const { t } = useTranslation("productForm")
 
     const handleChange = (e) => {
         setProduct({
@@ -51,38 +54,38 @@ const NewProductPage = () => {
                 <FormLabelControl
                     className="mb-3"
                     onChange={handleChange}
-                    placeholderText="Write name"
+                    placeholderText={t("placeholders.name")}
                     name="name"
-                    labelText="Product name"
+                    labelText={t("labels.name")}
                 />
 
                 <FormLabelControl
                     className="mb-3"
                     onChange={handleChange}
-                    placeholderText="Write quantity"
+                    placeholderText={t("placeholders.quantity")}
                     name="quantity"
-                    labelText="Product quantity"
+                    labelText={t("labels.quantity")}
                 />
 
                 <FormLabelControl
                     className="mb-3"
                     onChange={handleChange}
-                    placeholderText="Write price"
+                    placeholderText={t("placeholders.price")}
                     name="price"
-                    labelText="Product price"
+                    labelText={t("labels.price")}
                 />
 
                 <FormLabelControl
                     className="mb-3"
                     onChange={handleChange}
-                    placeholderText="Write description"
+                    placeholderText={t("placeholders.description")}
                     name="description"
-                    labelText="Product description"
+                    labelText={t("labels.description")}
                     isTextArea
                 />
 
                 <Button variant='primary' type='submit'>
-                    Submit
+                    {t("common:buttons.submit")}
                 </Button>
             </Form>
             { showCreatedProductInfo() }

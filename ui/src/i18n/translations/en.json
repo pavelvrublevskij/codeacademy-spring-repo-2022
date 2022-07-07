@@ -1,6 +1,23 @@
 {
   "common": {
     "hello": "Hello, $t(name)!",
-    "name": "World"
+    "name": "World",
+    "buttons": {
+      "submit": "Submit"
+    }
+  },
+  "productForm": {
+    "labels": {
+      "name": "Product name",
+      "quantity": "Product quantity",
+      "price": "Product price",
+      "description": "Product description"
+    },
+    "placeholders": {
+      "name": "Write name",
+      "quantity": "Write quantity",
+      "price": "Write price",
+      "description": "Write description"
+    }
   }
 }
