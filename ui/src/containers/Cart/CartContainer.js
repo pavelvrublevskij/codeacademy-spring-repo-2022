@@ -1,25 +1,11 @@
 import { Container, Table } from 'react-bootstrap';
-
-const initialCartItems = {
-    items: [
-        {
-            id: '9b4018ac-bac2-4afe-8ac6-055612ba9d40',
-            name: 'Big Mac',
-            quantity: 2,
-            price: 5.00,
-            totalPrice: 10.00,
-        },
-        {
-            id: '9b4018ac-bac2-4afe-8ac6-055612ba9d41',
-            name: 'Big Big',
-            quantity: 1,
-            price: 5.00,
-            totalPrice: 5.00,
-        },
-    ],
-};
+import { CartContext } from '../../contexts/CartContext';
+import { useContext } from 'react';
 
 const CartContainer = () => {
+
+    const { cart } = useContext(CartContext)
+
     return (
         <Container fluid>
             <Table striped bordered hover>
@@ -33,12 +19,13 @@ const CartContainer = () => {
                 </thead>
                 <tbody>
                     {
-                        initialCartItems.items.map((item) => (
+                        cart.items.length >= 0 &&
+                        cart.items.map(item => (
                             <tr key={item.id}>
                                 <td>{item.name}</td>
-                                <td align='right'>{item.quantity}</td>
+                                <td align='right'>{item.itemCount}</td>
                                 <td align='right'>{item.price}</td>
-                                <td align='right'>{item.totalPrice}</td>
+                                <td align='right'>{item.price * item.itemCount}</td>
                             </tr>
                         ))
                     }

@@ -6,7 +6,7 @@ const getProductsEndpoint = () =>
             new Promise((resolve, reject) => {
                 setTimeout(() => {
                     resolve(response);
-                }, 2000);
+                }, 1);
             })
         )
 

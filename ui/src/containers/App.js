@@ -7,10 +7,12 @@ import { AuthUserContext, initialAuthUserObj } from '../contexts/AuthUserContext
 import { useState } from 'react';
 import { saveToSessionStorage, StorageKey } from '../utils/sessionStorage';
 import "../i18n"
+import { CartContext, initialCartObj } from '../contexts/CartContext';
 
 function App() {
 
     const [authUser, setAuthUser] = useState(initialAuthUserObj)
+    const [cart, setCart] = useState(initialCartObj)
 
     const authContextValue = {
         authUser,
@@ -20,12 +22,32 @@ function App() {
         },
     }
 
+    const cartContextValue = {
+        cart,
+        addCartProduct: (product) => {
+            const cartItems = [...cart.items];  // kopijavimas
+            const existingProduct = cartItems.find(p => p.id === product.id);
+
+            if (existingProduct) {
+                existingProduct.itemCount++
+            } else {
+                cartItems.push({...product, itemCount: 1})
+            }
+
+            setCart({
+                items: cartItems
+            });
+        }
+    }
+
     return (
         <BrowserRouter>
             <div className="mainApp">
                 <AuthUserContext.Provider value={authContextValue}>
-                    <HeaderContainer />
-                    <Pages />
+                    <CartContext.Provider value={cartContextValue}>
+                        <HeaderContainer />
+                        <Pages />
+                    </CartContext.Provider>
                 </AuthUserContext.Provider>
                 <FooterContainer />
             </div>
