@@ -34,9 +34,13 @@ function App() {
                 cartItems.push({...product, itemCount: 1})
             }
 
-            setCart({
+            const cartState = {
                 items: cartItems
-            });
+            }
+
+            setCart(cartState);
+
+            saveToSessionStorage(StorageKey.cart, cartState)
         }
     }
 

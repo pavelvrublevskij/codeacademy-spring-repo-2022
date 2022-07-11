@@ -1,4 +1,5 @@
 import { createContext } from 'react';
+import { loadFromSessionStorage, StorageKey } from '../utils/sessionStorage';
 
 const CartContext = createContext(null)
 
@@ -11,12 +12,10 @@ const CartContext = createContext(null)
  *             price: 0.00,
  *             itemCount?: 0,
  *          },
- *        ]
+ *        ],
  * }}
  */
-const initialCartObj = {
-    items: [],
-};
+const initialCartObj = loadFromSessionStorage(StorageKey.cart) || {items: []};
 
 export {
     CartContext,

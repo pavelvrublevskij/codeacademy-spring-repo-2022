@@ -17,5 +17,6 @@ export const clearSessionStorage = () => sessionStorage.clear()
 
 
 export const StorageKey  = {
-    jwt: 'jwt'
+    jwt: 'jwt',
+    cart: 'cart',
 }
