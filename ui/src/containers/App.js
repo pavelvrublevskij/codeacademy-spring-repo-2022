@@ -8,6 +8,8 @@ import { useState } from 'react';
 import { saveToSessionStorage, StorageKey } from '../utils/sessionStorage';
 import "../i18n"
 import { CartContext, initialCartObj } from '../contexts/CartContext';
+import { Provider } from 'react-redux';
+import store from '../redux/store';
 
 function App() {
 
@@ -45,17 +47,19 @@ function App() {
     }
 
     return (
-        <BrowserRouter>
-            <div className="mainApp">
-                <AuthUserContext.Provider value={authContextValue}>
-                    <CartContext.Provider value={cartContextValue}>
-                        <HeaderContainer />
-                        <Pages />
-                    </CartContext.Provider>
-                </AuthUserContext.Provider>
-                <FooterContainer />
-            </div>
-        </BrowserRouter>
+        <Provider store={store}>
+            <BrowserRouter>
+                <div className='mainApp'>
+                    <AuthUserContext.Provider value={authContextValue}>
+                        <CartContext.Provider value={cartContextValue}>
+                            <HeaderContainer />
+                            <Pages />
+                        </CartContext.Provider>
+                    </AuthUserContext.Provider>
+                    <FooterContainer />
+                </div>
+            </BrowserRouter>
+        </Provider>
     );
 }
 
