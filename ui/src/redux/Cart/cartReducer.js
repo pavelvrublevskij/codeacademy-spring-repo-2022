@@ -24,17 +24,32 @@ const defaultState = {
 const cartReducer = (state = defaultState, action) => {
     switch (action.type) {
         case ADD_TO_CART: {
-            console.log('action payload from action creator', action.product);
+            const {product} = action
+            let itemFound = false;
+            let newItems = [...state.items];
+            newItems = newItems.map(item => {
+                if (item.id === product.id) {
+                    itemFound = true;
+                    return {
+                        ...item,
+                        itemCount: item.itemCount + 1,
+                    }
+                }
+
+                return item;
+            })
+
+            if (!itemFound) {
+                newItems = [
+                    ...newItems,
+                    {...product, itemCount: 1},
+                ]
+            }
+
             return {
                 ...state,
-                items: [
-                    ...state.items,
-                    {
-                        ...action.product,
-                        itemCount: 1,
-                    },
-                ],
-            };
+                items: newItems,
+            }
         }
         default:
             return state;
