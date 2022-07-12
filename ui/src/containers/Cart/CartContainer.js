@@ -1,4 +1,4 @@
-import Cart from './components/Cart/Cart';
+import Cart from './components/Cart';
 import ReduxMathExample from '../../components/training/ReduxExample/ReduxMathExample';
 
 const CartContainer = () => {

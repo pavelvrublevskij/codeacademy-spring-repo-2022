@@ -1,11 +1,6 @@
-
-import { CartContext } from '../../../../contexts/CartContext';
 import { Container, Table } from 'react-bootstrap';
-import { useContext } from 'react';
 
-const Cart = () => {
-    const { cart } = useContext(CartContext)
-
+const Cart = ({cartItems}) => {
     return (
         <Container fluid>
             <Table striped bordered hover>
@@ -19,8 +14,8 @@ const Cart = () => {
                 </thead>
                 <tbody>
                 {
-                    cart.items.length >= 0 &&
-                    cart.items.map(item => (
+                    cartItems.length >= 0 &&
+                    cartItems.map(item => (
                         <tr key={item.id}>
                             <td>{item.name}</td>
                             <td align='right'>{item.itemCount}</td>
