@@ -10,10 +10,15 @@ import {
 import { NavLink } from 'react-router-dom';
 import { AuthUserContext } from '../../contexts/AuthUserContext';
 import { useContext } from 'react';
+import { useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 const HeaderContainer = () => {
 
     const { authUser } = useContext(AuthUserContext)
+
+    const numberOfCartItems = useSelector(state => state.cart.items.length)
 
     return (
         <Navbar bg="light" expand="lg">
@@ -36,7 +41,14 @@ const HeaderContainer = () => {
                         <Nav.Link href="#" disabled>Users</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link to="/cart" as={NavLink}>Cart</Nav.Link>
+                        <Nav.Link to="/cart" as={NavLink}>
+                            <Button type="button" className="btn btn-primary position-relative">
+                                <FontAwesomeIcon className='position-relative' icon={solid('cart-shopping')}/>
+                                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    {numberOfCartItems}
+                                </span>
+                            </Button>
+                        </Nav.Link>
                     </Nav>
                     <NavDropdown title="Languages" id="navbarScrollingDropdown">
                         <NavDropdown.Item href="#action3">LT</NavDropdown.Item>
