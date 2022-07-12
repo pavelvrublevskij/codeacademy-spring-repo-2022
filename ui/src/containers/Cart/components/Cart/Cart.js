@@ -21,7 +21,7 @@ const Cart = ({cartItems, cartTotalPrice}) => {
                             <td>{item.name}</td>
                             <td align='right'>{item.itemCount}</td>
                             <td align='right'>{parseFloat(item.price).toFixed(2)}</td>
-                            <td align='right'>{item.price * item.itemCount}</td>
+                            <td align='right'>{(item.price * item.itemCount).toFixed(2)}</td>
                         </tr>
                     ))
                 }
