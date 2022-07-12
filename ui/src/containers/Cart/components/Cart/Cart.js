@@ -1,5 +1,5 @@
 
-import { CartContext } from '../../../contexts/CartContext';
+import { CartContext } from '../../../../contexts/CartContext';
 import { Container, Table } from 'react-bootstrap';
 import { useContext } from 'react';
 

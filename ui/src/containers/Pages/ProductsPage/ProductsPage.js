@@ -3,11 +3,12 @@ import { useContext, useEffect, useState } from 'react';
 import { Button, Card, Col, Container, Row, Spinner } from 'react-bootstrap';
 import { CartContext } from '../../../contexts/CartContext';
 
-const ProductsPage = () => {
+const ProductsPage = ({
+    addToCartDA,
+}) => {
 
     const [productItems, setProductItems] = useState([]);
     const [loading, setLoading] = useState(true);
-    const { addCartProduct } = useContext(CartContext)
 
     useEffect(() => {
         getProductsEndpoint()
@@ -19,7 +20,7 @@ const ProductsPage = () => {
     }, []);
 
     const handleAddProductToCart = (product) => {
-        addCartProduct({
+        addToCartDA({
                 id: product.productId,
                 name: product.name,
                 price: product.price,
@@ -58,3 +59,5 @@ const ProductsPage = () => {
 };
 
 export default ProductsPage;
+
+
