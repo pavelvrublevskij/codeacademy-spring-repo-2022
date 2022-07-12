@@ -1,10 +1,11 @@
 import Cart from './Cart';
 import { connect } from 'react-redux';
-import { cartItemsSelector } from '../../../../redux/Cart/cartSelector';
+import { cartItemsSelector, cartTotalPriceSelector } from '../../../../redux/Cart/cartSelector';
 
 const mapStateToProps = state => {
     return {
         cartItems: cartItemsSelector(state),
+        cartTotalPrice: cartTotalPriceSelector(state),
     }
 }
 

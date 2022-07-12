@@ -1,6 +1,7 @@
 import { Container, Table } from 'react-bootstrap';
+import './Cart.scss';
 
-const Cart = ({cartItems}) => {
+const Cart = ({cartItems, cartTotalPrice}) => {
     return (
         <Container fluid>
             <Table striped bordered hover>
@@ -19,12 +20,19 @@ const Cart = ({cartItems}) => {
                         <tr key={item.id}>
                             <td>{item.name}</td>
                             <td align='right'>{item.itemCount}</td>
-                            <td align='right'>{item.price}</td>
+                            <td align='right'>{parseFloat(item.price).toFixed(2)}</td>
                             <td align='right'>{item.price * item.itemCount}</td>
                         </tr>
                     ))
                 }
                 </tbody>
+                <tfoot>
+                    <tr className='cart_footer'>
+                        <td align='right'>Total:</td>
+                        <td align='right'>{cartItems.length}</td>
+                        <td align='right' colSpan={2}>{cartTotalPrice}</td>
+                    </tr>
+                </tfoot>
             </Table>
         </Container>
     );
