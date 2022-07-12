@@ -1,7 +1,6 @@
 import { getProductsEndpoint } from '../../../api/apiEndpoints';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Card, Col, Container, Row, Spinner } from 'react-bootstrap';
-import { CartContext } from '../../../contexts/CartContext';
 
 const ProductsPage = ({
     addToCartDA,
