@@ -1,8 +1,7 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import FormLabelControl from '../../../components/Form/FormLabelControl/FormLabelControl';
 import { createProductEndpoint } from '../../../api/apiEndpoints';
-import { AuthUserContext } from '../../../contexts/AuthUserContext';
 import { useTranslation } from "react-i18next";
 
 const NewProductPage = () => {
@@ -13,8 +12,6 @@ const NewProductPage = () => {
         description: '',
     });
     const [visible, setVisible] = useState(false);
-
-    const { authUser } = useContext(AuthUserContext)
 
     const { t } = useTranslation("productForm")
 

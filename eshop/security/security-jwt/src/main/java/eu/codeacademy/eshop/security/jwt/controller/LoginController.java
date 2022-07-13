@@ -12,6 +12,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -40,9 +43,17 @@ public class LoginController {
                         authRequest.getUsername(),
                         principal.getFullName(),
                         jwtProvider.getToken(principal),
-                        jwtProvider.getExpiresInSeconds()
+                        jwtProvider.getExpiresInSeconds(),
+                        getRoles(principal)
+
                 )))
                 .orElseThrow(() -> new BadCredentialsException("Authentication failed"));
+    }
+
+    private Set<String> getRoles(UserRoleDto userRoleDto) {
+        return userRoleDto.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toSet());
     }
 
     private Authentication authenticate(String username, String password) throws Exception {

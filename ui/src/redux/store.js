@@ -3,6 +3,7 @@ import cartReducer from './Cart/cartReducer';
 import mathExampleReducer from './MathExample/mathExampleReducer';
 import { loadFromLocalStorage, saveToLocalStorage, StorageKey } from '../utils/localStorage';
 import { subscribeToCartChanges } from '../utils/CartLocalStore';
+import userReducer from './User/userReducer';
 
 const preloadedState = () => ({
     cart: loadFromLocalStorage(StorageKey.cart) || undefined
@@ -13,6 +14,7 @@ const constructStore = () => {
       reducer: {
           cart: cartReducer,
           mathExample: mathExampleReducer,
+          user: userReducer,
       },
       preloadedState: preloadedState(),
   });

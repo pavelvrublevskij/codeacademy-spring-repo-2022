@@ -8,8 +8,6 @@ import {
     NavDropdown,
 } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { AuthUserContext } from '../../contexts/AuthUserContext';
-import { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
@@ -17,7 +15,7 @@ import { cartTotalItemsCountSelector } from '../../redux/Cart/cartSelector';
 
 const HeaderContainer = () => {
 
-    const { authUser } = useContext(AuthUserContext)
+    const authUser = useSelector(state => state.user)
 
     const numberOfCartItems = useSelector(state => cartTotalItemsCountSelector(state))
 
@@ -38,8 +36,12 @@ const HeaderContainer = () => {
                         navbarScroll
                     >
                         <Nav.Link to="/products" as={NavLink}>Products</Nav.Link>
-                        <Nav.Link to="/products/create" as={NavLink}>New Product</Nav.Link>
-                        <Nav.Link href="#" disabled>Users</Nav.Link>
+                        {authUser?.roles.includes("ROLE_ADMIN") &&
+                            <>
+                                <Nav.Link to="/products/create" as={NavLink}>New Product</Nav.Link>
+                                <Nav.Link href="#" disabled>Users</Nav.Link>
+                            </>
+                        }
                     </Nav>
                     <Nav>
                         <Nav.Link to="/cart" as={NavLink}>
