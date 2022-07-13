@@ -13,12 +13,13 @@ import { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { cartTotalItemsCountSelector } from '../../redux/Cart/cartSelector';
 
 const HeaderContainer = () => {
 
     const { authUser } = useContext(AuthUserContext)
 
-    const numberOfCartItems = useSelector(state => state.cart.items.length)
+    const numberOfCartItems = useSelector(state => cartTotalItemsCountSelector(state))
 
     return (
         <Navbar bg="light" expand="lg">

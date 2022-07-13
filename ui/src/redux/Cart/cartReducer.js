@@ -30,11 +30,7 @@ const cartReducer = (state = defaultState, action) => {
             let itemFound = false;
             let newItems = [...state.items];
 
-            let totalPrice = 0;
-
             newItems = newItems.map(item => {
-                totalPrice = totalPrice + item.price;
-
                 if (item.id === product.id) {
                     itemFound = true;
 
@@ -48,7 +44,6 @@ const cartReducer = (state = defaultState, action) => {
             })
 
             if (!itemFound) {
-                totalPrice = totalPrice + product.price;
                 newItems = [
                     ...newItems,
                     {...product, itemCount: 1},
@@ -58,7 +53,6 @@ const cartReducer = (state = defaultState, action) => {
             return {
                 ...state,
                 items: newItems,
-                totalPrice,
             }
         }
         default:

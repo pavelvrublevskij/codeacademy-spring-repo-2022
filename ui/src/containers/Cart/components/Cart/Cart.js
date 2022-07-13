@@ -1,7 +1,7 @@
 import { Container, Table } from 'react-bootstrap';
 import './Cart.scss';
 
-const Cart = ({cartItems, cartTotalPrice}) => {
+const Cart = ({cartItems, cartTotalItemsCount, cartTotalItemsPrice}) => {
     return (
         <Container fluid>
             <Table striped bordered hover>
@@ -29,8 +29,8 @@ const Cart = ({cartItems, cartTotalPrice}) => {
                 <tfoot>
                     <tr className='cart_footer'>
                         <td align='right'>Total:</td>
-                        <td align='right'>{cartItems.length}</td>
-                        <td align='right' colSpan={2}>{cartTotalPrice}</td>
+                        <td align='right'>{cartTotalItemsCount}</td>
+                        <td align='right' colSpan={2}>{cartTotalItemsPrice}</td>
                     </tr>
                 </tfoot>
             </Table>
