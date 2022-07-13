@@ -47,7 +47,7 @@ const Cart = ({
                     <tr className='cart_footer'>
                         <td align='right'>Total:</td>
                         <td align='right'>{cartTotalItemsCount}</td>
-                        <td align='right' colSpan={2}>{cartTotalItemsPrice}</td>
+                        <td align='right' colSpan={2}>{cartTotalItemsPrice.toFixed(2)}</td>
                     </tr>
                 </tfoot>
             </Table>

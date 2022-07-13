@@ -1,4 +1,5 @@
 import { ADD_TO_CART, REMOVE_FROM_CART } from './cartModel';
+import { subscribeToCartChanges } from '../../utils/CartLocalStore';
 
 /**
  * cart state:
@@ -50,10 +51,14 @@ const cartReducer = (state = defaultState, action) => {
                 ];
             }
 
-            return {
+            const cartLocalStorageObj = {
                 ...state,
                 items: newItems,
             }
+
+            subscribeToCartChanges(cartLocalStorageObj);
+
+            return cartLocalStorageObj
         }
         case REMOVE_FROM_CART:
             return {
