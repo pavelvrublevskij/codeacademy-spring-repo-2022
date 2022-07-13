@@ -2,7 +2,10 @@
  * Action & Action Creators
  */
 
-import { ADD_TO_CART } from './cartModel';
+import {
+    ADD_TO_CART,
+    REMOVE_FROM_CART
+} from './cartModel';
 
 /**
  *  funkcija, sukurianti action‘ą.
@@ -16,5 +19,10 @@ export const addToCart = (product) => (
         product,
     }
 );
+
+export const removeFromCart = (productId) => ({
+    type: REMOVE_FROM_CART,
+    productId,
+});
 
 

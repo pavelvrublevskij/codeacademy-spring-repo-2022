@@ -2,8 +2,10 @@ import Cart from './Cart';
 import { connect } from 'react-redux';
 import {
     cartItemsSelector,
-    cartTotalItemsCountSelector, cartTotalItemsPriceSelector,
+    cartTotalItemsCountSelector,
+    cartTotalItemsPriceSelector,
 } from '../../../../redux/Cart/cartSelector';
+import { removeFromCart } from '../../../../redux/Cart/cartActions';
 
 const mapStateToProps = state => {
     return {
@@ -13,4 +15,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(Cart)
+const mapDispatchToProps = {
+    removeFromCartByProductId: removeFromCart,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

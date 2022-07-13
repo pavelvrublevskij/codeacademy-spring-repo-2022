@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from './cartModel';
+import { ADD_TO_CART, REMOVE_FROM_CART } from './cartModel';
 
 /**
  * cart state:
@@ -55,6 +55,11 @@ const cartReducer = (state = defaultState, action) => {
                 items: newItems,
             }
         }
+        case REMOVE_FROM_CART:
+            return {
+                ...state,
+                items: state.items.filter(item => item.id !== action.productId),
+            }
         default:
             return state;
     }

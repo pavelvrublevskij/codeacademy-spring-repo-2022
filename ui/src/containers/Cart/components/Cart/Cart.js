@@ -1,7 +1,16 @@
-import { Container, Table } from 'react-bootstrap';
+import { Button, Container, Table } from 'react-bootstrap';
 import './Cart.scss';
 
-const Cart = ({cartItems, cartTotalItemsCount, cartTotalItemsPrice}) => {
+const Cart = ({
+    cartItems,
+    cartTotalItemsCount,
+    cartTotalItemsPrice,
+    removeFromCartByProductId,
+}) => {
+
+    const removeProductById = (id) =>
+        removeFromCartByProductId(id);
+
     return (
         <Container fluid>
             <Table striped bordered hover>
@@ -11,17 +20,25 @@ const Cart = ({cartItems, cartTotalItemsCount, cartTotalItemsPrice}) => {
                     <th align='right'>Quantity</th>
                     <th align='right'>Unit Price (Eur)</th>
                     <th align='right'>Total Price (Eur)</th>
+                    <th align='right'>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 {
                     cartItems.length >= 0 &&
-                    cartItems.map(item => (
-                        <tr key={item.id}>
+                    cartItems.map((item, index) => (
+                        <tr key={index}>
                             <td>{item.name}</td>
                             <td align='right'>{item.itemCount}</td>
                             <td align='right'>{parseFloat(item.price).toFixed(2)}</td>
                             <td align='right'>{(item.price * item.itemCount).toFixed(2)}</td>
+                            <td align='center'>
+                                <Button type="button"
+                                        className="btn btn-primary position-relative tableDeleteButton"
+                                        onClick={() => removeProductById(item.id)}>
+                                    Remove
+                                </Button>
+                            </td>
                         </tr>
                     ))
                 }
