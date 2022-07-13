@@ -8,16 +8,7 @@ const preloadedState = () => ({
     cart: loadFromLocalStorage(StorageKey.cart) || undefined
 })
 
-
-export default configureStore({
-    reducer: {
-        cart: cartReducer,
-        mathExample: mathExampleReducer,
-    },
-    preloadedState: preloadedState(),
-})
-
-/*const constructStore = () => {
+const constructStore = () => {
   const store = configureStore({
       reducer: {
           cart: cartReducer,
@@ -35,4 +26,6 @@ const subscribeCart = store => {
     store.subscribe(() => subscribeToCartChanges(store.getState().cart))
 }
 
-export default constructStore*/
+const store = constructStore()
+
+export default store
