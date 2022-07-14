@@ -12,12 +12,15 @@ import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { cartTotalItemsCountSelector } from '../../redux/Cart/cartSelector';
+import {useTranslation} from "react-i18next";
 
 const HeaderContainer = () => {
 
     const authUser = useSelector(state => state.user)
 
     const numberOfCartItems = useSelector(state => cartTotalItemsCountSelector(state))
+
+    const {t, i18n} = useTranslation();
 
     return (
         <Navbar bg="light" expand="lg">
@@ -53,9 +56,9 @@ const HeaderContainer = () => {
                             </Button>
                         </Nav.Link>
                     </Nav>
-                    <NavDropdown title="Languages" id="navbarScrollingDropdown">
-                        <NavDropdown.Item href="#action3">LT</NavDropdown.Item>
-                        <NavDropdown.Item href="#action4">EN</NavDropdown.Item>
+                    <NavDropdown title="Languages" id="navbarScrollingDropdown" onSelect={(eventKey) => i18n.changeLanguage(eventKey)}>
+                        <NavDropdown.Item eventKey="lt">LT</NavDropdown.Item>
+                        <NavDropdown.Item eventKey="en">EN</NavDropdown.Item>
                     </NavDropdown>
                     <Form className="d-flex">
                         <FormControl
