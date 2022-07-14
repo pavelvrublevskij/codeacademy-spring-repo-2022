@@ -1,5 +1,4 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {subscribeToCartChanges} from "../../utils/CartLocalStore";
 
 const defaultState = {
     items: [],
@@ -38,8 +37,6 @@ const cartSlice = createSlice({
                 ...state,
                 items: newItems,
             }
-
-            subscribeToCartChanges(cartLocalStorageObj);
 
             return cartLocalStorageObj
         },

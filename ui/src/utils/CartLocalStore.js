@@ -1,10 +1,9 @@
 import { saveToLocalStorage, StorageKey } from './localStorage';
-import throttle from "lodash";
+import throttle from "lodash/throttle";
 
 let prevCart = [];
 
-// FIXME: subscribe does not work and does not add into local storage!!!
-export const subscribeToCartChanges = (cart) => {
+export const createCartChangesSubscription = (store) => {
     /**
      * Creates a throttled function that only invokes func at most once per every wait milliseconds.
      * The throttled function comes with a cancel method to cancel delayed func invocations and a flush
@@ -14,16 +13,16 @@ export const subscribeToCartChanges = (cart) => {
      * of the last func invocation.
      * @see more at documentation: https://lodash.com/docs/#throttle
      */
-    throttle(() => {
+   return throttle(() => {
         console.log("lodash throttle event!");
-            const currentCart = cart;
+        const currentCart = store.getState().cart;
 
-            if (prevCart !== currentCart) {
-                prevCart = currentCart;
-                saveToLocalStorage(StorageKey.cart, currentCart);
-            }
+        if (prevCart !== currentCart) {
+            prevCart = currentCart;
+            saveToLocalStorage(StorageKey.cart, currentCart);
+        }
 
-            return currentCart;
-        }, 3000,
+        return currentCart;
+        }, 3000
     );
 };
