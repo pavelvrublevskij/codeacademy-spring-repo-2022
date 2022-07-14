@@ -19,5 +19,16 @@
       "price": "Write price",
       "description": "Write description"
     }
+  },
+  "login": {
+    "labels": {
+      "email": "Email",
+      "password": "Password"
+    }
+  },
+  "validations": {
+    "default": "An error occured",
+    "required": "Field $t({{label}}) is required",
+    "min": "Must be longer than {{min}}"
   }
 }

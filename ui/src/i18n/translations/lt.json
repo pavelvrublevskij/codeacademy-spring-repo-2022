@@ -18,5 +18,16 @@
       "price": "Nurodykite kainą",
       "description": "Nurodykite aprašymą"
     }
+  },
+  "login": {
+    "labels": {
+      "email": "El. paštas",
+      "password": "Slaptažodis"
+    }
+  },
+  "validations": {
+    "default": "Įvyko klaida",
+    "required": "Laukas $t({{label}}) privalomas",
+    "min": "Turi buti ilgesnis nei {{min}}"
   }
 }

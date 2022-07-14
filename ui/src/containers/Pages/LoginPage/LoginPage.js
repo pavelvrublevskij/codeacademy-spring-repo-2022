@@ -4,26 +4,29 @@ import {
     Container, Spinner,
 } from 'react-bootstrap';
 import FormikFieldInputGroup from '../../../components/Formik/FormikFieldInputGroup/FormikFieldInputGroup';
-import * as Yup from 'yup';
 import { loginEndpoint } from '../../../api/apiEndpoints';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setLogin } from '../../../redux/User/userActions';
+import {useTranslation} from "react-i18next";
+import Yup from "../../../validation"
 
 const validationSchema = Yup.object().shape({
     email: Yup.string()
-        .min(5, 'Ilgis turi buti ne mazesnis nei 5')
+        .min(5)
         .required()
-        //.email()
-        .matches(/^(.+)@(.+)$/, 'email neatitinka standarto'),
+        .matches(/^(.+)@(.+)$/)
+        .label("login:labels.email"),
     password: Yup.string()
-        .min(4, 'Slaptazodzio ilgis turi buti >= 4')
-        .required(),
+        .min(4)
+        .required()
+        .label("login:labels.password"),
 });
 
 const LoginPage = () => {
 
     const navigate = useNavigate()
+    const { t } = useTranslation()
     const dispatch = useDispatch()
 
     const postLogin = (login, helper) => {
@@ -76,7 +79,7 @@ const LoginPage = () => {
                                     </Button>
                                     : <Button type='submit'
                                               variant='primary'>
-                                        Submit
+                                        {t("buttons.submit")}
                                     </Button>
                                 }
                             </div>

@@ -6,6 +6,7 @@ import Pages from './Pages';
 import "../i18n"
 import { Provider } from 'react-redux';
 import store from '../redux/store';
+import "../validation"
 
 function App() {
     return (
