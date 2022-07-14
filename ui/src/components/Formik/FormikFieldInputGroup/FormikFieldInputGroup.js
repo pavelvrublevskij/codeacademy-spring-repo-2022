@@ -3,12 +3,16 @@ import {useTranslation} from "react-i18next";
 
 const FormikFieldInputGroup = ({
     field,
-    form,
+    form: { errors, touched },
     labelText,
     type
 }) => {
-    const isValid = !form.errors[field.name];
-    const isInvalid = form.touched[field.name] && !isValid;
+
+    const fieldError = errors[field.name]
+    const fieldTouched = touched[field.name]
+
+    const isValid = !fieldError;
+    const isInvalid = fieldTouched && !isValid;
 
     const { t: validationsT } = useTranslation("validations")
 
@@ -19,17 +23,17 @@ const FormikFieldInputGroup = ({
                 <Form.Control
                     type={type}
                     name={field.name}
-                    isValid={form.touched[field.name] && isValid}
+                    isValid={fieldTouched && isValid}
                     isInvalid={isInvalid}
-                    feedback={form.errors[field.name]}
+                    feedback={fieldError}
                     onChange={field.onChange}
                 />
 
-                {form.errors[field.name] &&
+                {fieldError &&
                     <Form.Control.Feedback type="invalid">
-                        {form.errors[field.name] instanceof String ?
-                            validationsT(form.errors[field.name]) :
-                            validationsT(form.errors[field.name].key, {label: form.errors[field.name].label})}
+                        {fieldError instanceof String ?
+                            validationsT(fieldError) :
+                            validationsT(fieldError.key, {label: fieldError.label})}
                     </Form.Control.Feedback>
                 }
             </InputGroup>
