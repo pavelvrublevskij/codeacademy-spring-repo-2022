@@ -1,33 +1,16 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from './cartModel';
-import { subscribeToCartChanges } from '../../utils/CartLocalStore';
+import {createSlice} from "@reduxjs/toolkit";
+import {subscribeToCartChanges} from "../../utils/CartLocalStore";
 
-/**
- * cart state:
- * {
- *   items: [
- *     {
- *         id: number,
- *         name: string,
- *         price: number,
- *         itemCount?: number,
- *     },
- *     ...
- *   ],
- *   totalPrice: number,
- * }
- */
 const defaultState = {
     items: [],
-    totalPrice: 0.00,
+    totalPrice: 0.00
 };
 
-/**
- * state valdanti funkcija, reaguojanti į gautą action‘ą.
- */
-const cartReducer = (state = defaultState, action) => {
-    switch (action.type) {
-        case ADD_TO_CART: {
-            const {product} = action;
+const cartSlice = createSlice({
+    name: "cart",
+    initialState: defaultState,
+    reducers: {
+        addToCart(state, { payload: product }) {
             let itemFound = false;
             let newItems = [...state.items];
 
@@ -59,15 +42,17 @@ const cartReducer = (state = defaultState, action) => {
             subscribeToCartChanges(cartLocalStorageObj);
 
             return cartLocalStorageObj
-        }
-        case REMOVE_FROM_CART:
+        },
+        removeFromCart(state, { payload: productId }) {
+            debugger
             return {
                 ...state,
-                items: state.items.filter(item => item.id !== action.productId),
+                items: state.items.filter(item => item.id !== productId),
             }
-        default:
-            return state;
-    }
-};
+        },
 
-export default cartReducer;
+    }
+})
+
+export default cartSlice.reducer
+export const { addToCart, removeFromCart } = cartSlice.actions

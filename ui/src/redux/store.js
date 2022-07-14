@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import cartReducer from './Cart/cartReducer';
+import cartReducer from './Cart/cartSlice';
 import mathExampleReducer from './MathExample/mathExampleReducer';
 import { loadFromLocalStorage, saveToLocalStorage, StorageKey } from '../utils/localStorage';
 import { subscribeToCartChanges } from '../utils/CartLocalStore';

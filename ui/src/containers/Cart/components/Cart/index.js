@@ -5,7 +5,7 @@ import {
     cartTotalItemsCountSelector,
     cartTotalItemsPriceSelector,
 } from '../../../../redux/Cart/cartSelector';
-import { removeFromCart } from '../../../../redux/Cart/cartActions';
+import {removeFromCart} from "../../../../redux/Cart/cartSlice";
 
 const mapStateToProps = state => {
     return {

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ProductsPage from './ProductsPage';
-import { addToCart } from '../../../redux/Cart/cartActions';
+import {addToCart} from "../../../redux/Cart/cartSlice";
 
 /**
  * ____DA - Dispatcher action
