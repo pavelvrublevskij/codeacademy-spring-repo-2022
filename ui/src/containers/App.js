@@ -22,8 +22,8 @@ function App() {
         <Provider store={store}>
             <BrowserRouter>
                 <div className='mainApp'>
-                    <Label text={'Labas TS'} onClick={handleOnClick}/>
-                    <span>{labelClickedText}</span>
+                    {/*<Label text={'Labas TS'} onClick={handleOnClick}/>*/}
+                    {/*<span>{labelClickedText}</span>*/}
                     <HeaderContainer />
                     <Pages />
                     <FooterContainer />
