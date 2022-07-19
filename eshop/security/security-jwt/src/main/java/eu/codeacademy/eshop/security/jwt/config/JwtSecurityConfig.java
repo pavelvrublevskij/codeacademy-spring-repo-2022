@@ -47,15 +47,26 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
         // set authorization request access
         http = http
                 .authorizeRequests()
+
+                    // ********** eshop api endpoints **********
                     .antMatchers(
                             "/login",
                             "/products"
                     ).permitAll()
+
+                    // ********** integration endpoints **********
+                    .antMatchers(
+                            "/currencies"
+                    ).permitAll()
+
+                    // ********** swagger endpoints **********
                     .antMatchers(
                             "/swagger-ui/**",
                             "/swagger-resources/**",
                             "/v2/api-docs/**",  // if we want to use old swagger version
                             "/v3/api-docs/**").permitAll()
+
+                    // ********** any other endpoint required authentication **********
                     .anyRequest().authenticated()
                     .and();
 

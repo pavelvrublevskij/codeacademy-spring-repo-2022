@@ -47,3 +47,10 @@ security:
   jwt:
     # validity time in minutes
     validity-time: 30
+
+logging:
+  level:
+    eu:
+      codeacademy:
+        eshop:
+          integration: DEBUG

@@ -9,4 +9,6 @@ include 'security:security-jwt'
 include 'security:security-jpa'
 findProject(':security:security-jpa')?.name = 'security-jpa'
 include 'eshop-commons'
+include 'integration'
+include 'integration:apilayer'
 
