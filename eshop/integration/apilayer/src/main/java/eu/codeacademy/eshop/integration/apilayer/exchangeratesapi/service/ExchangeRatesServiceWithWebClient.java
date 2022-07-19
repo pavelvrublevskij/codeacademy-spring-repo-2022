@@ -5,7 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.web.reactive.function.client.WebClient;
 
 /**
- * This implementation used RestTemplate for calling other services
+ * This implementation use WebFlux WebClient for calling other services
  */
 @Log4j2
 public class ExchangeRatesServiceWithWebClient implements ExchangeRatesService {

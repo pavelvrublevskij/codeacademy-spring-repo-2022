@@ -8,7 +8,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * This implementation used RestTemplate for calling other services
+ * This implementation use RestTemplate for calling other services
  */
 @Log4j2
 public class ExchangeRatesServiceWithRestTemplate implements ExchangeRatesService {
