@@ -29,5 +29,8 @@
     "default": "Įvyko klaida",
     "required": "Laukas $t({{label}}) privalomas",
     "min": "Turi buti ilgesnis nei {{min}}"
+  },
+  "header": {
+    "currencies": "Valiutos"
   }
 }

@@ -6,6 +6,7 @@ import ProductsPage from './ProductsPage';
 import CartPage from './CartPage/CartPage';
 import LoginPage from './LoginPage/LoginPage';
 import { useSelector } from 'react-redux';
+import Currency from './Currency/Currency';
 
 const Pages = () => {
     const userRoles = useSelector(state => state.user.roles);
@@ -30,6 +31,7 @@ const Pages = () => {
 
             <Route path='/cart' element={<CartPage />} />
             <Route path='/login' element={<LoginPage />} />
+            <Route path="/currencies" element={<Currency />} />
         </Routes>
     );
 };

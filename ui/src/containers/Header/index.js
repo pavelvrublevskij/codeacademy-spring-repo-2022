@@ -20,7 +20,7 @@ const HeaderContainer = () => {
 
     const numberOfCartItems = useSelector(state => cartTotalItemsCountSelector(state))
 
-    const {t, i18n} = useTranslation();
+    const {t, i18n} = useTranslation('header');
 
     return (
         <Navbar bg="light" expand="lg">
@@ -39,6 +39,11 @@ const HeaderContainer = () => {
                         navbarScroll
                     >
                         <Nav.Link to="/products" as={NavLink}>Products</Nav.Link>
+                        <Nav>
+                            <Nav.Link to="/currencies" as={NavLink}>
+                                {t('currencies')}
+                            </Nav.Link>
+                        </Nav>
                         {authUser?.roles.includes("ROLE_ADMIN") &&
                             <>
                                 <Nav.Link to="/products/create" as={NavLink}>New Product</Nav.Link>

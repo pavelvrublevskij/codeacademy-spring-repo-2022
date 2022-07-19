@@ -30,5 +30,8 @@
     "default": "An error occured",
     "required": "Field $t({{label}}) is required",
     "min": "Must be longer than {{min}}"
+  },
+  "header": {
+    "currencies": "Currencies"
   }
 }
